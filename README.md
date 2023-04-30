@@ -8,5 +8,5 @@
 
 
 ## todo
-- [ ] 刚进页面会css闪一下
+- [ ] 刚进页面会css闪一下, Tailcss ssr生成
 

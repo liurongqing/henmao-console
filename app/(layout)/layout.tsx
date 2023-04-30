@@ -86,25 +86,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-function StyleProviderLayout({ children }: { children: React.ReactNode }) {
-  const [cache] = useState(() => createCache());
-
-  const render = <>{children}</>;
-
-  useServerInsertedHTML(() => {
-    return (
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `</script>${extractStyle(cache)}<script>`,
-        }}
-      />
-    );
-  });
-
-  if (typeof window !== "undefined") {
-    return render;
-  }
-
-  return <StyleProvider cache={cache}>{render}</StyleProvider>;
-}
