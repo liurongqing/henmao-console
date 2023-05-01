@@ -1,6 +1,7 @@
 import { Table, Pagination, Skeleton, Empty } from "antd";
 import useSWR from "swr";
 import { tableColumns } from "./tableColumns";
+import { ModalComponent } from "./modalComponent";
 import { fetcher } from "@/utils";
 import { LEVEL_API } from "@/consts";
 
@@ -23,6 +24,7 @@ export const TableComponent = () => {
         }}
       />
       <Pagination className="mt-4 text-right" />
+      <ModalComponent />
     </>
   );
 };
