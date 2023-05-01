@@ -8,5 +8,7 @@
 
 
 ## todo
-- [ ] 刚进页面会css闪一下, Tailcss ssr生成
+- [ ] 刚进页面会css闪一下
+1. 配置 StyleProvider
+2. 将 tailwind 优先级处理一下
 
