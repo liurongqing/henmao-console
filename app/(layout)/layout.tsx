@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
 import { Breadcrumb, Layout, Menu, theme, Dropdown, Space } from "antd";
 import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
-import { createCache, extractStyle, StyleProvider } from "@ant-design/cssinjs";
-import { useServerInsertedHTML } from "next/navigation";
+import {
+  StyleProvider,
+} from "@ant-design/cssinjs";
 
 import type { MenuProps } from "antd";
+// import "antd/dist/reset.css";
 import "../globals.css";
 
 const { Header, Content, Footer } = Layout;
@@ -42,7 +43,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className="app">
         <StyleProvider ssrInline={true}>
           <Layout className="min-h-screen flex flex-col">
             <Header className="flex fixed w-full z-[1]">

@@ -5,7 +5,10 @@ import { Button } from "antd";
 //   title: "首页",
 //   description: "这是个游戏后台",
 // };
-export default function App() {
+
+export default function App(...props: any[]) {
+  console.log('props', props);
+
   return (
     <div>
       <h1>App 002</h1>
