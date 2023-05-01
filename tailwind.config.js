@@ -10,5 +10,7 @@ module.exports = {
   },
   important: ".app",
   plugins: [],
-  corePlugins: {},
+  corePlugins: {
+    preflight: false,
+  },
 };

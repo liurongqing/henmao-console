@@ -1,12 +1,9 @@
 "use client";
 import { Breadcrumb, Layout, Menu, theme, Dropdown, Space } from "antd";
 import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
-import {
-  StyleProvider,
-} from "@ant-design/cssinjs";
+import { StyleProvider } from "@ant-design/cssinjs";
 
 import type { MenuProps } from "antd";
-// import "antd/dist/reset.css";
 import "../globals.css";
 
 const { Header, Content, Footer } = Layout;
@@ -17,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   function handleLogout() {
-    console.log("click...");
+    console.log("click..1.");
   }
   const items: MenuProps["items"] = [
     {
@@ -40,6 +37,14 @@ export default function RootLayout({
       ],
     },
   ];
+  // const menuItems = Array(15)
+  //   .fill(null)
+  //   .map((v, i) => {
+  //     return {
+  //       key: i,
+  //       label: "游戏管理" + i,
+  //     };
+  //   });
 
   return (
     <html lang="en">
@@ -58,7 +63,7 @@ export default function RootLayout({
                 className="flex-1 flex-wrap"
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={["2"]}
+                defaultSelectedKeys={["002"]}
                 items={menuItems}
               />
 
