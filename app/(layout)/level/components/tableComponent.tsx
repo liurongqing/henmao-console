@@ -17,7 +17,7 @@ export const TableComponent = () => {
         rowKey="_id"
         pagination={false}
         columns={columns}
-        dataSource={data}
+        dataSource={data?.data}
         locale={{
           emptyText: isLoading ? <Skeleton active /> : <Empty />,
         }}
