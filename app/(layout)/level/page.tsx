@@ -10,7 +10,7 @@ import {
 } from "./components";
 
 export default function Level() {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
@@ -30,13 +30,13 @@ export default function Level() {
         title="关卡详情"
         headStyle={{ borderBottom: 0 }}
         bodyStyle={{ paddingTop: 0 }}
-        extra={<ActionComponent setOpen={setOpen} />}
+        extra={<ActionComponent/>}
         className="mt-4"
       >
         <TableComponent />
       </Card>
 
-      <ModalComponent open={open} setOpen={setOpen} />
+      <ModalComponent/>
     </Store.Provider>
   );
 }

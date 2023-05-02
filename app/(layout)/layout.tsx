@@ -25,7 +25,7 @@ export default function RootLayout({
           <StyleProvider ssrInline={true}>
             <Layout className="min-h-screen flex flex-col">
               <HeaderComponent />
-              <ContentComponent children={children} />
+              <ContentComponent>{children}</ContentComponent>
               <FooterComponent />
             </Layout>
           </StyleProvider>

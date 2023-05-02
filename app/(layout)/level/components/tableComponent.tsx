@@ -11,6 +11,7 @@ import { Store } from "../store";
 export const TableComponent = () => {
   const { state, dispatch } = useStore(Store);
 
+  // 删除
   async function handleDelete(row: any) {
     // console.log("111", row, state);
     await request(`${LEVEL_API}/${row._id}`, undefined, "delete");
@@ -19,9 +20,17 @@ export const TableComponent = () => {
     dispatch({ type: "refresh" });
   }
 
+  //修改
+  async function handleEditModal(row: any) {
+    console.log("row", row);
+    // 打开 modal
+    dispatch({ type: "setFormData", data: row });
+    dispatch({ type: "open" });
+  }
+
   const query = urlToString(state.searchQuery);
 
-  const columns = tableColumns({ handleDelete });
+  const columns = tableColumns({ handleDelete, handleEditModal });
   const { data, error, isLoading } = useSWR(
     `${LEVEL_API}?current=${state.current}&pageSize=${PAGINATION.pageSize}&refCount=${state.refCount}&${query}`,
     request

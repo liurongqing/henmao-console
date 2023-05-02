@@ -1,28 +1,31 @@
-import { request } from "@/utils";
+import { useCallback } from "react";
+import { request, throttle } from "@/utils";
 import { LEVEL_API } from "@/consts";
 import { Modal, Form, Input, Select, message } from "antd";
 import { useStore } from "@/hooks";
 import { Store } from "../store";
 
-export const ModalComponent = ({ open, setOpen }: any) => {
-  const { dispatch } = useStore(Store);
+export const ModalComponent = () => {
+  const { state, dispatch } = useStore(Store);
+
   // 确定添加
   function handleOk() {
     form.validateFields().then(async (values) => {
-      await request(LEVEL_API, values, "post");
-      message.success("添加成功");
-      setOpen(false);
+      if (values._id) {
+        await request(LEVEL_API, values, "put");
+      } else {
+        await request(LEVEL_API, values, "post");
+      }
+
+      message.success("操作成功");
+      dispatch({ type: "close" });
       dispatch({ type: "refresh" });
     });
   }
 
   // 取消/关闭
   function handleCancel() {
-    setOpen(false);
-  }
-
-  function handleClose() {
-    form.resetFields();
+    dispatch({ type: "close" });
   }
 
   const [form] = Form.useForm();
@@ -35,27 +38,35 @@ export const ModalComponent = ({ open, setOpen }: any) => {
     .fill(null)
     .map((_, i) => ({ value: i + 1, label: (i + 1).toString() }));
 
-  const initialValues = {
-    level: 1,
-    type: types?.[0]?.value,
-    frame: frames?.[0]?.value,
-    time: 60,
-  };
+  function afterOpenChange(open: boolean) {
+    console.log("rrest open", open);
+    if (open) {
+      // 打开, 如果一样，就不处理【要不要这样做呢】
+      form.setFieldsValue(state.initialForm);
+    } else {
+      // 关闭
+      form.resetFields();
+      dispatch({ type: "reset" });
+    }
+  }
+
   return (
     <Modal
-      title="添加关卡"
-      open={open}
+      title={state.initialForm._id ? "修改关卡" : "添加关卡"}
+      open={state.isOpen}
       onOk={handleOk}
+      afterOpenChange={afterOpenChange}
       onCancel={handleCancel}
-      afterClose={handleClose}
     >
       <Form
         className="mt-10"
-        initialValues={initialValues}
         form={form}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 10 }}
       >
+        <Form.Item name="_id" hidden={true}>
+          <Input />
+        </Form.Item>
         <Form.Item label="关卡" name="level">
           <Input />
         </Form.Item>
