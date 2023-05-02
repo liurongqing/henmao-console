@@ -14,15 +14,19 @@ export const SearchComponent = () => {
     dispatch({ type: "setCurrent", data: { current: 1 } });
   }
 
+  function handleReset() {
+    form.resetFields();
+  }
+
   return (
     <Form layout="inline" form={form}>
       <Space size="middle" wrap>
         <Form.Item label="关卡" name="level">
-          <Input />
+          <Input allowClear />
         </Form.Item>
         <Form.Item>
           <Space>
-            <Button>重置</Button>
+            <Button onClick={handleReset}>重置</Button>
             <Button
               onClick={handleSearch}
               icon={<SearchOutlined />}

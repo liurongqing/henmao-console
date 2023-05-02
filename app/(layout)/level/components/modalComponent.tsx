@@ -14,8 +14,11 @@ export const ModalComponent = ({ open, setOpen }: any) => {
 
   // 取消/关闭
   function handleCancel() {
-    form.resetFields();
     setOpen(false);
+  }
+  
+  function handleClose() {
+    form.resetFields();
   }
 
   const [form] = Form.useForm();
@@ -35,7 +38,13 @@ export const ModalComponent = ({ open, setOpen }: any) => {
     time: 60,
   };
   return (
-    <Modal title="添加关卡" open={open} onOk={handleOk} onCancel={handleCancel}>
+    <Modal
+      title="添加关卡"
+      open={open}
+      onOk={handleOk}
+      onCancel={handleCancel}
+      afterClose={handleClose}
+    >
       <Form
         className="mt-10"
         initialValues={initialValues}
