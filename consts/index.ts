@@ -3,6 +3,6 @@ export const LEVEL_API = `${ROOT_API}/level`;
 
 export const PAGINATION = {
   current: 1,
-  pageSize: 2,
+  pageSize: 10,
   showTotal: (total: number) => `共 ${total} 条数据`,
 };

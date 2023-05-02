@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Table, Pagination, Skeleton, Empty } from "antd";
+import { Table, Pagination, Skeleton, Empty, message } from "antd";
 import useSWR from "swr";
 import { tableColumns } from "./tableColumns";
 import { ModalComponent } from "./modalComponent";
@@ -11,16 +11,19 @@ import { Store } from "../store";
 export const TableComponent = () => {
   const { state, dispatch } = useStore(Store);
 
-  function handleDelete(row: any) {
-    console.log("111", row, state);
+  async function handleDelete(row: any) {
+    // console.log("111", row, state);
+    await request(`${LEVEL_API}/${row._id}`, undefined, "delete");
+    // 删除成功
+    message.success("删除成功");
+    dispatch({ type: "refresh" });
   }
 
   const query = urlToString(state.searchQuery);
 
   const columns = tableColumns({ handleDelete });
   const { data, error, isLoading } = useSWR(
-    LEVEL_API +
-      `?current=${state.current}&pageSize=${PAGINATION.pageSize}&${query}`,
+    `${LEVEL_API}?current=${state.current}&pageSize=${PAGINATION.pageSize}&refCount=${state.refCount}&${query}`,
     request
   );
 

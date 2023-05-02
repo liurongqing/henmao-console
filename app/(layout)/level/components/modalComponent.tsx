@@ -1,14 +1,18 @@
 import { request } from "@/utils";
 import { LEVEL_API } from "@/consts";
 import { Modal, Form, Input, Select, message } from "antd";
+import { useStore } from "@/hooks";
+import { Store } from "../store";
 
 export const ModalComponent = ({ open, setOpen }: any) => {
+  const { dispatch } = useStore(Store);
   // 确定添加
   function handleOk() {
     form.validateFields().then(async (values) => {
       await request(LEVEL_API, values, "post");
       message.success("添加成功");
       setOpen(false);
+      dispatch({ type: "refresh" });
     });
   }
 
@@ -16,7 +20,7 @@ export const ModalComponent = ({ open, setOpen }: any) => {
   function handleCancel() {
     setOpen(false);
   }
-  
+
   function handleClose() {
     form.resetFields();
   }
