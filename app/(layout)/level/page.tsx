@@ -1,6 +1,7 @@
 "use client";
 import { useState, useReducer } from "react";
 import { Card } from "antd";
+import { Store, initialState, reducer } from "./store";
 import {
   TableComponent,
   SearchComponent,
@@ -9,11 +10,16 @@ import {
 } from "./components";
 
 export default function Level() {
-  // const [isOpen, open] = useReducer(() => true, false);
   const [open, setOpen] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <>
+    <Store.Provider
+      value={{
+        state,
+        dispatch,
+      }}
+    >
       {/* 搜索区域 */}
       <Card>
         <SearchComponent />
@@ -31,6 +37,6 @@ export default function Level() {
       </Card>
 
       <ModalComponent open={open} setOpen={setOpen} />
-    </>
+    </Store.Provider>
   );
 }

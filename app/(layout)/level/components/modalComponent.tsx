@@ -1,16 +1,23 @@
-import { fetcher } from "@/utils";
+import { request } from "@/utils";
 import { LEVEL_API } from "@/consts";
-import { Modal, Form, Input, Select } from "antd";
+import { Modal, Form, Input, Select, message } from "antd";
 
 export const ModalComponent = ({ open, setOpen }: any) => {
+  // 确定添加
   function handleOk() {
-    console.log("我点击了 ok");
-
-    form.validateFields().then((values) => {
-      console.log("values", values);
-      fetcher(LEVEL_API, { method: "post" });
+    form.validateFields().then(async (values) => {
+      await request(LEVEL_API, values, "post");
+      message.success("添加成功");
+      setOpen(false);
     });
   }
+
+  // 取消/关闭
+  function handleCancel() {
+    form.resetFields();
+    setOpen(false);
+  }
+
   const [form] = Form.useForm();
 
   const types = Array(4)
@@ -28,14 +35,7 @@ export const ModalComponent = ({ open, setOpen }: any) => {
     time: 60,
   };
   return (
-    <Modal
-      title="添加关卡"
-      open={open}
-      onOk={handleOk}
-      onCancel={() => {
-        setOpen(false);
-      }}
-    >
+    <Modal title="添加关卡" open={open} onOk={handleOk} onCancel={handleCancel}>
       <Form
         className="mt-10"
         initialValues={initialValues}
