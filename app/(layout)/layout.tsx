@@ -10,6 +10,7 @@ import {
   FooterComponent,
 } from "./components";
 import "../globals.css";
+import Provider from "./Provider";
 
 dayjs.locale("en");
 
@@ -21,15 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="app">
-        <ConfigProvider locale={zhCN}>
-          <StyleProvider ssrInline={true}>
-            <Layout className="min-h-screen flex flex-col">
-              <HeaderComponent />
-              <ContentComponent>{children}</ContentComponent>
-              <FooterComponent />
-            </Layout>
-          </StyleProvider>
-        </ConfigProvider>
+        <Provider>
+          <ConfigProvider locale={zhCN}>
+            <StyleProvider ssrInline={true}>
+              <Layout className="min-h-screen flex flex-col">
+                <HeaderComponent />
+                <ContentComponent>{children}</ContentComponent>
+                <FooterComponent />
+              </Layout>
+            </StyleProvider>
+          </ConfigProvider>
+        </Provider>
       </body>
     </html>
   );
