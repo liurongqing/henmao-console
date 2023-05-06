@@ -5,7 +5,6 @@ import { Form, Input, Checkbox, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { LOGIN_BG, LOGIN_API, STORAGE_KEY } from "@/consts";
 import { request, storage } from "@/utils";
-// import { API_ADMIN_LOGIN, STORAGE_KEY } from "@/consts";
 
 const { useForm } = Form;
 
@@ -26,18 +25,19 @@ export default function LoginComponent({}) {
         // console.log("values", values);
         // console.log("typeof useRouter", typeof useRouter);
         const data = await request(LOGIN_API, values, "post");
-        const { token } = data;
-        storage.setItem(STORAGE_KEY.TOKEN, token);
+        console.log("data", data);
+        // const { token } = data;
+        // storage.setItem(STORAGE_KEY.TOKEN, token);
 
-        message.success({
-          content: "登录成功！",
-          duration: 1,
-          onClose() {
-            setLoading(false);
-            // 如果有跳转链接，则加上，redirect=/aa/aa
-            router.replace("/");
-          },
-        });
+        // message.success({
+        //   content: "登录成功！",
+        //   duration: 1,
+        //   onClose() {
+        //     setLoading(false);
+        //     // 如果有跳转链接，则加上，redirect=/aa/aa
+        //     router.replace("/");
+        //   },
+        // });
       })
       .catch((err) => {
         console.error(err);

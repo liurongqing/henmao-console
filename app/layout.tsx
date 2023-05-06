@@ -16,11 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="app">
-        <ConfigProvider locale={zhCN}>
-          <StyleProvider ssrInline={true}>
-            <Layout className="min-h-screen flex flex-col">{children}</Layout>
-          </StyleProvider>
-        </ConfigProvider>
+          <ConfigProvider locale={zhCN}>
+            <StyleProvider ssrInline={true}>
+              <Layout className="min-h-screen flex flex-col">{children}</Layout>
+            </StyleProvider>
+          </ConfigProvider>
       </body>
     </html>
   );
