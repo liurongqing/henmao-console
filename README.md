@@ -8,6 +8,7 @@
 
 
 ## todo
+- 模仿 mini-console 把token 用户信息保存到 localstorage 中
 - [x] 刚进页面会css闪一下【不合适，重新处理】
 
   1. 配置 StyleProvider，ssrInline 为 true
