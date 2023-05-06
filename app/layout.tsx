@@ -4,7 +4,7 @@ import { StyleProvider } from "@ant-design/cssinjs";
 import zhCN from "antd/locale/zh_CN";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
-import "../globals.css";
+import "./globals.css";
 
 dayjs.locale("en");
 
