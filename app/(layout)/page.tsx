@@ -7,11 +7,11 @@ import { Button } from "antd";
 // };
 
 export default function App(...props: any[]) {
-  // console.log('props', props);
+  console.log('props', props);
 
   return (
     <div>
-      <h1>App 002</h1>
+      <h1>is /</h1>
       <Button type="primary">primary</Button>
     </div>
   );

@@ -1,0 +1,11 @@
+"use client";
+import { useEffect, useState } from "react";
+export default async function Page() {
+  const title = await new Promise<string>((resolve) => {
+    setTimeout(() => {
+      resolve("002");
+    }, 3000);
+  });
+
+  return <h1>我来了, {title}</h1>;
+}

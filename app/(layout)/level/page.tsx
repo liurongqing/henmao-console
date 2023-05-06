@@ -9,9 +9,11 @@ import {
   ModalComponent,
 } from "./components";
 
-export default function Level() {
+export default async function Level() {
   // const [open, setOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  console.log('haha')
 
   return (
     <Store.Provider

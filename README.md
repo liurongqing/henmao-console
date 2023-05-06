@@ -8,7 +8,7 @@
 
 
 ## todo
-- [x] 刚进页面会css闪一下
+- [x] 刚进页面会css闪一下【不合适，重新处理】
 
   1. 配置 StyleProvider，ssrInline 为 true
 
