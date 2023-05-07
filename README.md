@@ -22,5 +22,8 @@
 - [x] 刚进页面会css闪一下【不合适，重新处理】
   1. 配置 StyleProvider，ssrInline 为 true
   1. 将 tailwind 优先级处理一下，添加  important: ".app" 配置
+- [x] 样式处理，最后选择, 打整体包，参考下面customize-theme-cn
+  参考地址：https://ant.design/docs/blog/extract-ssr-cn
+  参考地址：https://ant.design/docs/react/customize-theme-cn
 - [x] 无限调用store设置，然后卡死
   配置level/page.tsx 不为 async 函数，就不会死循环了，也不用添加 loading.tsx
