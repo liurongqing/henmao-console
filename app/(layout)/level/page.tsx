@@ -9,7 +9,7 @@ import {
   ModalComponent,
 } from "./components";
 
-export default async function Level() {
+export default function Level() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   console.log("haha 002");

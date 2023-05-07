@@ -29,6 +29,7 @@ export const TableComponent = () => {
   }
 
   const query = urlToString(state.searchQuery);
+  console.log('query', query)
 
   const columns = tableColumns({ handleDelete, handleEditModal });
   const { data, error, isLoading } = useSWR(
