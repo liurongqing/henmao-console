@@ -5,7 +5,6 @@ import { storage } from "@/utils";
 // 验证 http 状态
 async function checkStatus(res: any) {
   if (!res.ok) {
-    // console.log("res", res);
     const error: any = new Error(
       `http 请求失败！状态：${res?.status}，原因：${res?.statusText}`
     );
@@ -24,7 +23,6 @@ function checkResponse(response: any) {
     return response.data;
   }
 
-  // console.log("res", response);
   const msg = response?.message || "服务器繁忙，请重试！";
   const error: any = new Error(msg);
   error.response = response;
@@ -49,23 +47,15 @@ export const request = async (
     url += "?" + new URLSearchParams(data).toString();
   }
 
-  // console.log("url", url);
-  // if (url.indexOf("/login") === -1 && !localStorage.getItem(TOKEN_KEY)) {
-  //   // @ts-ignore
-  //   window.location.href = process.env.REACT_APP_LOGIN;
-  // }
-
   // 处理 header
   const token = storage.getItem(STORAGE_KEY.TOKEN);
   let defaultHeaders: any = {
     ...(token ? { Authorization: `Bearer ${token}` } : null),
     "Content-Type": "application/json",
   };
-  // if (isFileUpload) {
-  //   delete defaultHeaders["Content-Type"];
-  // }
-  // console.log("data", data);
-  // const contentType = headers?.["Content-Type"];
+  if (isFileUpload) {
+    delete defaultHeaders["Content-Type"];
+  }
 
   try {
     const res = await fetch(url, {
