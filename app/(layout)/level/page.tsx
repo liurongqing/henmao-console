@@ -1,5 +1,5 @@
 "use client";
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import { Card } from "antd";
 import { Store, initialState, reducer } from "./store";
 import {
@@ -10,10 +10,9 @@ import {
 } from "./components";
 
 export default async function Level() {
-  // const [open, setOpen] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log('haha')
+  console.log("haha 002");
 
   return (
     <Store.Provider
@@ -32,13 +31,13 @@ export default async function Level() {
         title="关卡详情"
         headStyle={{ borderBottom: 0 }}
         bodyStyle={{ paddingTop: 0 }}
-        extra={<ActionComponent/>}
+        extra={<ActionComponent />}
         className="mt-4"
       >
         <TableComponent />
       </Card>
 
-      <ModalComponent/>
+      <ModalComponent />
     </Store.Provider>
   );
 }

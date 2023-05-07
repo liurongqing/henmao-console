@@ -1,5 +1,4 @@
 import { message } from "antd";
-import { redirect } from "next/navigation";
 import { STORAGE_KEY } from "@/consts";
 import { storage } from "@/utils";
 
