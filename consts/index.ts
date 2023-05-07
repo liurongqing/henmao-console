@@ -3,7 +3,9 @@ export const LEVEL_API = `${ROOT_API}/level`;
 export const LOGIN_API = `${ROOT_API}/auth/login`;
 
 export const STORAGE_KEY = {
-  TOKEN: "Token",
+  TOKEN: "TOKEN",
+  NICKNAME: "NICKNAME",
+  USERNAME: "USERNAME",
 };
 
 export const PAGINATION = {

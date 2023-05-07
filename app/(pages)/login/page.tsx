@@ -22,22 +22,25 @@ export default function LoginComponent({}) {
     form
       .validateFields()
       .then(async (values) => {
-        // console.log("values", values);
-        // console.log("typeof useRouter", typeof useRouter);
+        console.log("values", values);
+
         const data = await request(LOGIN_API, values, "post");
         console.log("data", data);
-        // const { token } = data;
-        // storage.setItem(STORAGE_KEY.TOKEN, token);
+        const { access_token, nickname, username } = data;
+        // storage.setItem(STORAGE_KEY.TOKEN, access_token);
+        storage.setItem(STORAGE_KEY.TOKEN, access_token);
+        storage.setItem(STORAGE_KEY.NICKNAME, nickname);
+        storage.setItem(STORAGE_KEY.USERNAME, username);
 
-        // message.success({
-        //   content: "登录成功！",
-        //   duration: 1,
-        //   onClose() {
-        //     setLoading(false);
-        //     // 如果有跳转链接，则加上，redirect=/aa/aa
-        //     router.replace("/");
-        //   },
-        // });
+        message.success({
+          content: "登录成功！",
+          duration: 1,
+          onClose() {
+            setLoading(false);
+            // 如果有跳转链接，则加上，redirect=/aa/aa
+            // router.replace("/");
+          },
+        });
       })
       .catch((err) => {
         console.error(err);
