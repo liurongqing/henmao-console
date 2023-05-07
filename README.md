@@ -3,18 +3,25 @@
 
 ## todo
 
-- 登录应该有个 checkLogin，  登录之前做判断，在页面之前，或是Login之前【完成一半】
+
+**重要：**
+
+- [ ] 退出登录，及显示昵称
+- [ ] 后端接口从数据库中读数据，登录信息
+- [ ] 想想关卡需要的信息， 以及制作定时任务了
 
 
 
-- 模仿 mini-console 把token 用户信息保存到 localstorage 中
+
+**不着急**
+- [ ] 登录应该有个 checkLogin，  登录之前做判断，在页面之前，或是Login之前【完成一半】
 - [ ] Breadcrumb 配置
-
 - [ ] modal 下的afterOpenChange  afterClose 会执行2次
-- [x] 重置、搜索
-- 新建、编辑、删除
-- 全局状态管理 useContent
 
+- [x] 模仿 mini-console 把token 用户信息保存到 localstorage 中
+- [x] 重置、搜索
+- [x] 新建、编辑、删除
+- [x] 全局状态管理 useContent
 - [x] 搜索时，重置第一页
   通过 refCount 改变，重新发请求
 - [x] 回车登录
