@@ -5,11 +5,12 @@ import {
   FooterComponent,
 } from "./components";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  console.log('layout...')
   return (
     <>
       <HeaderComponent />

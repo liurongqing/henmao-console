@@ -1,6 +1,7 @@
 import { message } from "antd";
-// import { STORAGE_KEY } from "@/consts";
-// import { storage } from "@/utils";
+import { redirect } from "next/navigation";
+import { STORAGE_KEY } from "@/consts";
+import { storage } from "@/utils";
 
 // 验证 http 状态
 async function checkStatus(res: any) {
@@ -56,9 +57,9 @@ export const request = async (
   // }
 
   // 处理 header
-  // const token = storage.getItem(STORAGE_KEY.TOKEN);
+  const token = storage.getItem(STORAGE_KEY.TOKEN);
   let defaultHeaders: any = {
-    // ...(token ? { Authorization: `Bearer ${token}` } : null),
+    ...(token ? { Authorization: `Bearer ${token}` } : null),
     "Content-Type": "application/json",
   };
   // if (isFileUpload) {
@@ -82,14 +83,16 @@ export const request = async (
     const response: any = await res.json();
     return checkResponse(response);
   } catch (error: any) {
-    // console.log("error", error);
+    console.log("error", error, error?.status);
     // 失败统一处理
-    // if (error?.status === 401) {
-    //   message.warning("请重新登录", 2, () => {
-    //     window.location.replace("/login");
-    //   });
-    // } else {
-    // }
+    if (error?.status === 401) {
+      message.warning("请重新登录", 1.5, () => {
+        // const a = redirect("/login");
+        // window.location.replace("/login");
+      });
+      return;
+    }
+
     message.error(error?.message);
     throw error;
   }

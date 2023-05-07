@@ -26,9 +26,9 @@ export default function LoginComponent({}) {
 
         const data = await request(LOGIN_API, values, "post");
         console.log("data", data);
-        const { access_token, nickname, username } = data;
+        const { token, nickname, username } = data;
         // storage.setItem(STORAGE_KEY.TOKEN, access_token);
-        storage.setItem(STORAGE_KEY.TOKEN, access_token);
+        storage.setItem(STORAGE_KEY.TOKEN, token);
         storage.setItem(STORAGE_KEY.NICKNAME, nickname);
         storage.setItem(STORAGE_KEY.USERNAME, username);
 
@@ -38,7 +38,7 @@ export default function LoginComponent({}) {
           onClose() {
             setLoading(false);
             // 如果有跳转链接，则加上，redirect=/aa/aa
-            // router.replace("/");
+            router.replace("/");
           },
         });
       })
@@ -84,6 +84,7 @@ export default function LoginComponent({}) {
           <Button
             type="primary"
             block
+            htmlType="submit"
             className="login-form-button"
             loading={loading}
             onClick={handleLogin}
