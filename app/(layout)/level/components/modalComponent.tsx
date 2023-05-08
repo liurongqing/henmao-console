@@ -12,7 +12,7 @@ export const ModalComponent = () => {
   function handleOk() {
     form.validateFields().then(async (values) => {
       if (values._id) {
-        await request(LEVEL_API, values, "put");
+        await request(`${LEVEL_API}/${values._id}`, values, "put");
       } else {
         await request(LEVEL_API, values, "post");
       }

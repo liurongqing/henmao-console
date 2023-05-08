@@ -1,3 +1,4 @@
+"use client"
 export const storage = {
   getItem(key: string) {
     const data: any = localStorage.getItem(key);

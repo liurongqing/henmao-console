@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Form, Input, Checkbox, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -12,6 +12,8 @@ export default function LoginComponent({}) {
   const [form] = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
   // console.log("router", typeof useRouter);
   // console.log("router", router);
   // const navigate = useNavigate();
@@ -37,8 +39,9 @@ export default function LoginComponent({}) {
           duration: 1,
           onClose() {
             setLoading(false);
-            // 如果有跳转链接，则加上，redirect=/aa/aa
-            router.replace("/");
+            // 如果有跳转链接，则加上， redirect=/aa/aa
+            const redirect = searchParams.get("redirect") || "/";
+            router.replace(redirect);
           },
         });
       })

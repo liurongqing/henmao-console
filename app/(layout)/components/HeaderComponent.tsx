@@ -1,9 +1,25 @@
 import { Menu, Dropdown, Layout, Space } from "antd";
+
 import { LogoutOutlined, DownOutlined } from "@ant-design/icons";
+
+import { useRouter, usePathname } from "next/navigation";
+import { STORAGE_KEY } from "@/consts";
+import { storage } from "@/utils";
+
 const { Header, Content, Footer } = Layout;
 
 export const HeaderComponent = () => {
-  function handleLogout() {}
+  const router = useRouter();
+  const pathname = usePathname();
+
+  function handleLogout() {
+    storage.removeItem(STORAGE_KEY.TOKEN);
+    storage.removeItem(STORAGE_KEY.NICKNAME);
+    storage.removeItem(STORAGE_KEY.USERNAME);
+    router.replace(`/login?redirect=${pathname}`);
+  }
+
+  const nickname: string = storage.getItem(STORAGE_KEY.NICKNAME);
 
   const items = [
     {
@@ -43,7 +59,7 @@ export const HeaderComponent = () => {
       <Dropdown menu={{ items }} className="text-white/60">
         <a href="/" onClick={(e) => e.preventDefault()}>
           <Space>
-            刘荣清
+            <div>{nickname}</div>
             <DownOutlined />
           </Space>
         </a>
