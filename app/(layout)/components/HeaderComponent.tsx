@@ -36,8 +36,34 @@ export const HeaderComponent = () => {
       label: "游戏管理",
       children: [
         {
-          key: "002",
+          key: "001-1",
           label: "关卡管理",
+        },
+      ],
+    },
+    {
+      key: "002",
+      label: "系统管理",
+      children: [
+        {
+          key: "002-1",
+          label: "用户管理",
+        },
+        {
+          key: "002-2",
+          label: "用户组管理",
+        },
+        {
+          key: "002-3",
+          label: "角色管理",
+        },
+        {
+          key: "002-4",
+          label: "角色组管理",
+        },
+        {
+          key: "002-5",
+          label: "权限管理",
         },
       ],
     },
