@@ -1,12 +1,11 @@
 import { Form, Space, Input, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { pickCondition } from "@/utils";
-import { useStore } from "@/hooks";
-import { Store } from "../store";
+import { useDispatch } from "../store";
 
 export const SearchComponent = () => {
   const [form] = Form.useForm();
-  const { dispatch } = useStore(Store);
+  const dispatch = useDispatch();
 
   async function handleSearch() {
     const data = await form.getFieldsValue();

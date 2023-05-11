@@ -1,7 +1,9 @@
-"use client"
+"use client";
+
 export const storage = {
   getItem(key: string) {
-    const data: any = localStorage.getItem(key);
+    const data: any =
+      typeof window !== "undefined" ? localStorage.getItem(key) : null;
     try {
       return JSON.parse(data);
     } catch (e) {
@@ -10,12 +12,12 @@ export const storage = {
   },
   setItem(key: string, value: any) {
     const data = typeof value === "object" ? JSON.stringify(value) : value;
-    localStorage.setItem(key, data);
+    typeof window !== "undefined" && localStorage.setItem(key, data);
   },
   removeItem(key: string) {
-    localStorage.removeItem(key);
+    typeof window !== "undefined" && localStorage.removeItem(key);
   },
   clear() {
-    localStorage.clear();
+    typeof window !== "undefined" && localStorage.clear();
   },
 };

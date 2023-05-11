@@ -1,7 +1,7 @@
 "use client";
 import { useReducer } from "react";
 import { Card } from "antd";
-import { Store, initialState, reducer } from "./store";
+import { Provider } from "./store";
 import {
   TableComponent,
   SearchComponent,
@@ -10,17 +10,8 @@ import {
 } from "./components";
 
 export default function Level() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  console.log("haha 002");
-
   return (
-    <Store.Provider
-      value={{
-        state,
-        dispatch,
-      }}
-    >
+    <Provider>
       {/* 搜索区域 */}
       <Card>
         <SearchComponent />
@@ -38,6 +29,6 @@ export default function Level() {
       </Card>
 
       <ModalComponent />
-    </Store.Provider>
+    </Provider>
   );
 }

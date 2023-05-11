@@ -1,10 +1,10 @@
 import { Space, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { useStore } from "@/hooks";
-import { Store } from "../store";
+import { useDispatch } from "../store";
 
 export const ActionComponent = () => {
-  const { dispatch } = useStore(Store);
+  const dispatch = useDispatch();
+
   return (
     <Space>
       <Button

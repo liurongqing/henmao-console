@@ -2,11 +2,12 @@ import { useCallback } from "react";
 import { request, throttle } from "@/utils";
 import { LEVEL_API } from "@/consts";
 import { Modal, Form, Input, Select, message } from "antd";
-import { useStore } from "@/hooks";
-import { Store } from "../store";
+// import { useStore } from "@/hooks";
+import { useStore, useDispatch } from "../store";
 
 export const ModalComponent = () => {
-  const { state, dispatch } = useStore(Store);
+  const state = useStore();
+  const dispatch = useDispatch();
 
   // 确定添加
   function handleOk() {

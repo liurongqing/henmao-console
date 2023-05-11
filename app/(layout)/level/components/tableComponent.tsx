@@ -5,11 +5,11 @@ import { tableColumns } from "./tableColumns";
 import { ModalComponent } from "./modalComponent";
 import { request, urlToString } from "@/utils";
 import { LEVEL_API, PAGINATION } from "@/consts";
-import { useStore } from "@/hooks";
-import { Store } from "../store";
+import { useStore, useDispatch } from "../store";
 
 export const TableComponent = () => {
-  const { state, dispatch } = useStore(Store);
+  const state = useStore();
+  const dispatch = useDispatch();
 
   // 删除
   async function handleDelete(row: any) {
@@ -29,7 +29,7 @@ export const TableComponent = () => {
   }
 
   const query = urlToString(state.searchQuery);
-  console.log('query', query)
+  console.log("query", query);
 
   const columns = tableColumns({ handleDelete, handleEditModal });
   const { data, error, isLoading } = useSWR(
