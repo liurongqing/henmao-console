@@ -1,4 +1,5 @@
 "use client";
+
 import { useReducer } from "react";
 import { Card } from "antd";
 import { Provider } from "./store";
@@ -9,7 +10,7 @@ import {
   ModalComponent,
 } from "./components";
 
-export default function Level() {
+export default async function Level() {
   return (
     <Provider>
       {/* 搜索区域 */}
@@ -18,7 +19,7 @@ export default function Level() {
       </Card>
 
       {/* 表格区域 */}
-      <Card
+      {/* <Card
         title="关卡详情"
         headStyle={{ borderBottom: 0 }}
         bodyStyle={{ paddingTop: 0 }}
@@ -26,9 +27,10 @@ export default function Level() {
         className="mt-4"
       >
         <TableComponent />
-      </Card>
+      </Card> */}
 
       <ModalComponent />
     </Provider>
   );
 }
+

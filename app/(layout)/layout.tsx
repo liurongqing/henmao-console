@@ -1,4 +1,5 @@
 "use client";
+
 import {
   HeaderComponent,
   ContentComponent,
@@ -10,6 +11,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  console.log("layout layout...");
+  
   return (
     <>
       <HeaderComponent />

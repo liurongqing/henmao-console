@@ -21,7 +21,7 @@ export const HeaderComponent = () => {
     router.replace(`/login?redirect=${pathname}`);
   }
 
-  const nickname: string = storage.getItem(STORAGE_KEY.NICKNAME);
+  // const nickname: string = storage.getItem(STORAGE_KEY.NICKNAME);
 
   const items = [
     {
@@ -87,7 +87,7 @@ export const HeaderComponent = () => {
       <Dropdown menu={{ items }} className="text-white/60">
         <a href="/" onClick={(e) => e.preventDefault()}>
           <Space>
-            <div>{nickname}</div>
+            {/* <div>{nickname}</div> */}
             <DownOutlined />
           </Space>
         </a>
