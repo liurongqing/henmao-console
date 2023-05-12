@@ -1,20 +1,15 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  console.error("request.nextUrl.pathname", request.nextUrl.pathname);
+  console.log("rrrrrrrrrequest", request.nextUrl.pathname, request.url);
 
-  const response = NextResponse.next();
-  return response;
-  // return NextResponse.redirect(new URL('/home', request.url));
+  if (request.nextUrl.pathname.startsWith("/level")) {
+    // return NextResponse.rewrite(new URL("/login1", request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  if (request.nextUrl.pathname.startsWith("/dashboard")) {
+    return NextResponse.rewrite(new URL("/dashboard/user", request.url));
+  }
 }
-
-// See "Matching Paths" below to learn more
-// export const config = {
-//   matcher: "/api/*",
-// };
-// export const runtime = 'nodejs';
-export const config = {
-  matcher: ["/api", "/level"],
-};
