@@ -15,6 +15,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // 在这验证接口，成功，则进入页面
+  // request()
   return (
     <html lang="en">
       <body className="app">
