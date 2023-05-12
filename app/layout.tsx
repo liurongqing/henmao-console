@@ -7,6 +7,8 @@ import "../public/antd.min.css";
 import "./globals.css";
 
 dayjs.locale("en");
+{/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}
+ 
 
 export default function RootLayout({
   children,
