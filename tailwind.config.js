@@ -8,7 +8,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  important: ".app",
   plugins: [],
   corePlugins: {
     preflight: false,

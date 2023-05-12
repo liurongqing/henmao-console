@@ -8,6 +8,8 @@ import { LEVEL_API, PAGINATION } from "@/consts";
 import { useStore, useDispatch } from "../store";
 
 export const TableComponent = () => {
+  console.log('tableComponent');
+  
   const state = useStore();
   const dispatch = useDispatch();
 
@@ -29,7 +31,7 @@ export const TableComponent = () => {
   }
 
   const query = urlToString(state.searchQuery);
-  console.log("query", query);
+  // console.log("query", query);
 
   const columns = tableColumns({ handleDelete, handleEditModal });
   const { data, error, isLoading } = useSWR(

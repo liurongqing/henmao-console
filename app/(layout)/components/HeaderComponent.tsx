@@ -1,3 +1,5 @@
+"use client";
+
 import { Menu, Dropdown, Layout, Space } from "antd";
 
 import { LogoutOutlined, DownOutlined } from "@ant-design/icons";
