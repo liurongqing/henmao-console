@@ -1,39 +1,39 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-async function getData() {
+async function checkLogin() {
   try {
     const res = await fetch("http://localhost:3002/auth/checkLogin", {
       method: "POST",
     });
 
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-
-    // Recommendation: handle errors
     if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
       throw new Error("Failed to fetch data");
     }
 
-    return await res.json();
+    const data = await res.json();
+    return data.data;
   } catch {
     return null;
   }
 }
 
+// 验证是否登录
 export async function middleware(request: NextRequest) {
   console.log("rrrrrrrrrequest", request.nextUrl.pathname);
 
-  if (request.nextUrl.pathname.startsWith("/level")) {
-    // return NextResponse.rewrite(new URL("/login1", request.url));
-    const data = await getData();
-    console.log("data", { data });
-    // return NextResponse.redirect(new URL("/login", request.url));
-  }
+  const isLogin = await checkLogin();
 
-  if (request.nextUrl.pathname.startsWith("/dashboard")) {
-    return NextResponse.rewrite(new URL("/dashboard/user", request.url));
+  // 如果是登录页面，如果已经登录了，则跳转到到首页
+  if (request.nextUrl.pathname.startsWith("/login")) {
+    if (isLogin) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  } else {
+    // 如果不是登录页面，还没有登录，则跳转到登录页
+    if (!isLogin) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
   }
 }
 
