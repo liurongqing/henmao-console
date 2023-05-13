@@ -9,7 +9,7 @@ import { request, urlToString } from "@/utils";
 import { LEVEL_API, PAGINATION } from "@/consts";
 import { useStore, useDispatch } from "../store";
 
-const useTable = () => {};
+const getLevels = () => {};
 
 export const TableComponent = () => {
   const state = useStore();
@@ -35,14 +35,16 @@ export const TableComponent = () => {
   const query = urlToString(state.searchQuery);
 
   const columns = tableColumns({ handleDelete, handleEditModal });
-  // const { data, error, isLoading } = useSWR(
-  //   `${LEVEL_API}?current=${state.current}&pageSize=${PAGINATION.pageSize}&refCount=${state.refCount}&${query}`,
-  //   request
-  // );
+  const { data, error, isLoading } = useSWR(
+    `${LEVEL_API}?current=${state.current}&pageSize=${PAGINATION.pageSize}&refCount=${state.refCount}&${query}`,
+    request
+  );
+
+  console.log("data", { error, data, isLoading });
 
   // const {isLoading, data} = useTable()
-  const isLoading = false;
-  const data = { list: [], total: 1 };
+  // const isLoading = false;
+  // const data = { list: [], total: 1 };
 
   return (
     <>

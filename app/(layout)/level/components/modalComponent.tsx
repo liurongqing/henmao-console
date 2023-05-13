@@ -1,7 +1,18 @@
 import { useCallback } from "react";
 import { request, throttle } from "@/utils";
 import { LEVEL_API } from "@/consts";
-import { Modal, Form, Input, Select, message } from "antd";
+import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
+import {
+  Modal,
+  Form,
+  Input,
+  Select,
+  message,
+  Space,
+  Button,
+  Row,
+  Col,
+} from "antd";
 // import { useStore } from "@/hooks";
 import { useStore, useDispatch } from "../store";
 
@@ -51,6 +62,11 @@ export const ModalComponent = () => {
     }
   }
 
+  const formItemLayout = {
+    labelCol: { span: 5 },
+    wrapperCol: { span: 12 },
+  };
+
   return (
     <Modal
       title={state.initialForm._id ? "修改关卡" : "添加关卡"}
@@ -59,24 +75,59 @@ export const ModalComponent = () => {
       afterOpenChange={afterOpenChange}
       onCancel={handleCancel}
     >
-      <Form
-        className="mt-10"
-        form={form}
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 10 }}
-      >
+      <Form className="mt-10" form={form} {...formItemLayout}>
         <Form.Item name="_id" hidden={true}>
           <Input />
         </Form.Item>
         <Form.Item label="关卡" name="level">
           <Input />
         </Form.Item>
-        <Form.Item label="类型" name="type">
+        <Form.List name="donuts">
+          {(fields, { add, remove }) => (
+            <>
+              {fields.map(({ key, name, ...restField }) => {
+                return (
+                  <Form.Item label="糖果">
+                    <div className="flex items-center">
+                      <Form.Item className="mb-0 mr-2">
+                        <Select
+                          options={types}
+                          className="!w-40"
+                          placeholder="type"
+                        ></Select>
+                      </Form.Item>
+                      <Form.Item className="mb-0 mr-2">
+                        <Select
+                          options={frames}
+                          className="!w-40"
+                          placeholder="frame"
+                        ></Select>
+                      </Form.Item>
+                      <MinusCircleOutlined onClick={() => remove(name)} />
+                    </div>
+                  </Form.Item>
+                );
+              })}
+
+              <Form.Item label=" " colon={false} wrapperCol={{ span: 17 }}>
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  block
+                  icon={<PlusOutlined />}
+                >
+                  Add field
+                </Button>
+              </Form.Item>
+            </>
+          )}
+        </Form.List>
+        {/* <Form.Item label="类型" name="type">
           <Select options={types}></Select>
         </Form.Item>
         <Form.Item label="帧数" name="frame">
           <Select options={frames}></Select>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item label="倒计时" name="time">
           <Input />
         </Form.Item>

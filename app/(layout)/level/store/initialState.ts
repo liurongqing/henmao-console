@@ -8,8 +8,12 @@ export const initialState = {
   initialForm: {
     _id: "",
     level: 1,
-    type: 1,
-    frame: 1,
+    // type: 1,
+    // frame: 1,
+    donuts: [
+      { type: 1, frame: 2 },
+      { type: 2, frame: 3 },
+    ],
     time: 60,
   },
 };
