@@ -2,20 +2,24 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 async function getData() {
-  const res = await fetch("http://localhost:3002/auth/checkLogin", {
-    method: "POST",
-  });
+  try {
+    const res = await fetch("http://localhost:3002/auth/checkLogin", {
+      method: "POST",
+    });
 
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
 
-  // Recommendation: handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    // Recommendation: handle errors
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return await res.json();
+  } catch {
+    return null;
   }
-
-  return await res.json();
 }
 
 export async function middleware(request: NextRequest) {
