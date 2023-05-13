@@ -1,10 +1,14 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-async function checkLogin() {
+async function checkLogin(token) {
   try {
     const res = await fetch("http://localhost:3002/auth/checkLogin", {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     if (!res.ok) {
@@ -20,10 +24,9 @@ async function checkLogin() {
 
 // 验证是否登录
 export async function middleware(request: NextRequest) {
-  console.log("rrrrrrrrrequest", request.nextUrl.pathname);
-
-  const isLogin = await checkLogin();
-
+  const token: any = request.cookies.get("token");
+  const isLogin = await checkLogin(token?.value);
+  console.log("isLogin", { isLogin });
   // 如果是登录页面，如果已经登录了，则跳转到到首页
   if (request.nextUrl.pathname.startsWith("/login")) {
     if (isLogin) {

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Table, Pagination, Skeleton, Empty, message } from "antd";
 import useSWR from "swr";
@@ -7,9 +9,9 @@ import { request, urlToString } from "@/utils";
 import { LEVEL_API, PAGINATION } from "@/consts";
 import { useStore, useDispatch } from "../store";
 
+const useTable = () => {};
+
 export const TableComponent = () => {
-  console.log('tableComponent');
-  
   const state = useStore();
   const dispatch = useDispatch();
 
@@ -31,13 +33,16 @@ export const TableComponent = () => {
   }
 
   const query = urlToString(state.searchQuery);
-  // console.log("query", query);
 
   const columns = tableColumns({ handleDelete, handleEditModal });
-  const { data, error, isLoading } = useSWR(
-    `${LEVEL_API}?current=${state.current}&pageSize=${PAGINATION.pageSize}&refCount=${state.refCount}&${query}`,
-    request
-  );
+  // const { data, error, isLoading } = useSWR(
+  //   `${LEVEL_API}?current=${state.current}&pageSize=${PAGINATION.pageSize}&refCount=${state.refCount}&${query}`,
+  //   request
+  // );
+
+  // const {isLoading, data} = useTable()
+  const isLoading = false;
+  const data = { list: [], total: 1 };
 
   return (
     <>

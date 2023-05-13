@@ -19,7 +19,7 @@ export default async function Level() {
       </Card>
 
       {/* 表格区域 */}
-      {/* <Card
+      <Card
         title="关卡详情"
         headStyle={{ borderBottom: 0 }}
         bodyStyle={{ paddingTop: 0 }}
@@ -27,7 +27,7 @@ export default async function Level() {
         className="mt-4"
       >
         <TableComponent />
-      </Card> */}
+      </Card>
 
       <ModalComponent />
     </Provider>

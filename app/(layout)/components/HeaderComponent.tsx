@@ -1,8 +1,8 @@
 "use client";
 
 import { Menu, Dropdown, Layout, Space } from "antd";
-
 import { LogoutOutlined, DownOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 import { useRouter, usePathname } from "next/navigation";
 import { STORAGE_KEY } from "@/consts";
@@ -10,6 +10,7 @@ import { storage } from "@/utils";
 
 const { Header, Content, Footer } = Layout;
 
+// 请求用户信息与头像
 export const HeaderComponent = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -39,7 +40,7 @@ export const HeaderComponent = () => {
       children: [
         {
           key: "001-1",
-          label: "关卡管理",
+          label: <Link href="/level">关卡管理</Link>,
         },
       ],
     },
@@ -49,7 +50,7 @@ export const HeaderComponent = () => {
       children: [
         {
           key: "002-1",
-          label: "用户管理",
+          label: <Link href="/user">用户管理</Link>,
         },
         {
           key: "002-2",

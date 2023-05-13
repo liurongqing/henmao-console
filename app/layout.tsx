@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import App from "./App";
 
 interface RootLayoutProps {

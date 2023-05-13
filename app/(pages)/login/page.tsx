@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Form, Input, Checkbox, Button, message } from "antd";
@@ -14,22 +15,14 @@ export default function LoginComponent({}) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // console.log("router", typeof useRouter);
-  // console.log("router", router);
-  // const navigate = useNavigate();
-
   function handleLogin(e) {
     e.preventDefault();
     setLoading(true);
     form
       .validateFields()
       .then(async (values) => {
-        console.log("values", values);
-
-        const data = await request(LOGIN_API, values, "post");
-        console.log("data", data);
+        const data = await request("/api/auth/login", values, "post");
         const { token, nickname, username } = data;
-        // storage.setItem(STORAGE_KEY.TOKEN, access_token);
         storage.setItem(STORAGE_KEY.TOKEN, token);
         storage.setItem(STORAGE_KEY.NICKNAME, nickname);
         storage.setItem(STORAGE_KEY.USERNAME, username);
@@ -41,6 +34,7 @@ export default function LoginComponent({}) {
             setLoading(false);
             // 如果有跳转链接，则加上， redirect=/aa/aa
             const redirect = searchParams.get("redirect") || "/";
+            // console.log("redirect", { redirect });
             router.replace(redirect);
           },
         });
