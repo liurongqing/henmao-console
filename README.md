@@ -13,6 +13,7 @@ middleware 无效
 
 - [ ] 想想关卡需要的信息， 以及制作定时任务了
 - [ ] 部署到 vercel 上
+openid
 
 
 
@@ -28,6 +29,7 @@ middleware 无效
 **bug**
 rewrites 里， body体数据无法传给后端，在 13.4.2 版本修复了
 https://github.com/vercel/next.js/issues/48040
+
 
 
 
