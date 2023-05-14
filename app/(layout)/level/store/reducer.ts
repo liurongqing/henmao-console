@@ -16,14 +16,13 @@ export const reducer = (state: any, action: any) => {
       return { ...state, isOpen: false };
     }
     case "setFormData": {
-      const { _id, level, type, frame, time } = action.data;
+      const { _id, level, donuts, time } = action.data;
       return {
         ...state,
         initialForm: {
           _id,
           level,
-          type,
-          frame,
+          donuts,
           time,
         },
       };

@@ -12,6 +12,7 @@ import {
   Button,
   Row,
   Col,
+  InputNumber,
 } from "antd";
 // import { useStore } from "@/hooks";
 import { useStore, useDispatch } from "../store";
@@ -23,25 +24,10 @@ export const ModalComponent = () => {
   // 确定添加
   function handleOk() {
     form.validateFields().then(async (values) => {
-      // console.log("values", { values });
-      // return null;
       if (values._id) {
         await request(`${LEVEL_API}/${values._id}`, values, "put");
       } else {
         await request(LEVEL_API, values, "post");
-        // await fetch(LEVEL_API, {
-        //   // body: JSON.stringify(values),
-        //   body: "a=1",
-        //   headers: new Headers({
-        //     "Content-Type": "application/json",
-        //     Accept: "application/json",
-        //   }),
-        //   // headers: {
-        //   //   "Content-Type": "application/json",
-        //   //   "Accept": "application/json"
-        //   // },
-        //   method: "POST",
-        // });
       }
 
       message.success("操作成功");
@@ -102,23 +88,41 @@ export const ModalComponent = () => {
             <>
               {fields.map(({ key, name, ...restField }) => {
                 return (
-                  <Form.Item label="甜甜圈" key={key}>
+                  <Form.Item className="mb-0" label="甜甜圈" key={key}>
                     <div className="flex items-center">
-                      <Form.Item name={[name, "type"]} className="mb-0 mr-2">
+                      <Form.Item
+                        name={[name, "type"]}
+                        className="mr-2"
+                        rules={[{ required: true, message: "请输入" }]}
+                      >
                         <Select
                           options={types}
-                          className="!w-40"
+                          className="!w-24"
                           placeholder="type"
                         ></Select>
                       </Form.Item>
-                      <Form.Item name={[name, "frame"]} className="mb-0 mr-2">
+                      <Form.Item
+                        name={[name, "frame"]}
+                        className="mr-2"
+                        rules={[{ required: true, message: "请输入" }]}
+                      >
                         <Select
                           options={frames}
-                          className="!w-40"
+                          className="!w-24"
                           placeholder="frame"
                         ></Select>
                       </Form.Item>
-                      <MinusCircleOutlined onClick={() => remove(name)} />
+                      <Form.Item
+                        name={[name, "num"]}
+                        className="mr-2"
+                        rules={[{ required: true, message: "请输入" }]}
+                      >
+                        <InputNumber className="!w-20" placeholder="数量" />
+                      </Form.Item>
+                      <MinusCircleOutlined
+                        className="w-8"
+                        onClick={() => remove(name)}
+                      />
                     </div>
                   </Form.Item>
                 );
@@ -137,13 +141,7 @@ export const ModalComponent = () => {
             </>
           )}
         </Form.List>
-        {/* <Form.Item label="类型" name="type">
-          <Select options={types}></Select>
-        </Form.Item>
-        <Form.Item label="帧数" name="frame">
-          <Select options={frames}></Select>
-        </Form.Item> */}
-        <Form.Item label="倒计时" name="time">
+        <Form.Item label="倒计时" name="time" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
       </Form>
