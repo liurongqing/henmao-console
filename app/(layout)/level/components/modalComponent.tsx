@@ -23,10 +23,25 @@ export const ModalComponent = () => {
   // 确定添加
   function handleOk() {
     form.validateFields().then(async (values) => {
+      // console.log("values", { values });
+      // return null;
       if (values._id) {
         await request(`${LEVEL_API}/${values._id}`, values, "put");
       } else {
         await request(LEVEL_API, values, "post");
+        // await fetch(LEVEL_API, {
+        //   // body: JSON.stringify(values),
+        //   body: "a=1",
+        //   headers: new Headers({
+        //     "Content-Type": "application/json",
+        //     Accept: "application/json",
+        //   }),
+        //   // headers: {
+        //   //   "Content-Type": "application/json",
+        //   //   "Accept": "application/json"
+        //   // },
+        //   method: "POST",
+        // });
       }
 
       message.success("操作成功");
@@ -79,7 +94,7 @@ export const ModalComponent = () => {
         <Form.Item name="_id" hidden={true}>
           <Input />
         </Form.Item>
-        <Form.Item label="关卡" name="level">
+        <Form.Item label="关卡" name="level" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
         <Form.List name="donuts">
@@ -87,16 +102,16 @@ export const ModalComponent = () => {
             <>
               {fields.map(({ key, name, ...restField }) => {
                 return (
-                  <Form.Item label="糖果">
+                  <Form.Item label="甜甜圈" key={key}>
                     <div className="flex items-center">
-                      <Form.Item className="mb-0 mr-2">
+                      <Form.Item name={[name, "type"]} className="mb-0 mr-2">
                         <Select
                           options={types}
                           className="!w-40"
                           placeholder="type"
                         ></Select>
                       </Form.Item>
-                      <Form.Item className="mb-0 mr-2">
+                      <Form.Item name={[name, "frame"]} className="mb-0 mr-2">
                         <Select
                           options={frames}
                           className="!w-40"
@@ -116,7 +131,7 @@ export const ModalComponent = () => {
                   block
                   icon={<PlusOutlined />}
                 >
-                  Add field
+                  新增
                 </Button>
               </Form.Item>
             </>

@@ -48,9 +48,9 @@ export const request = async (
   }
 
   // 处理 header
-  const token = storage.getItem(STORAGE_KEY.TOKEN);
+  // const token = storage.getItem(STORAGE_KEY.TOKEN);
   let defaultHeaders: any = {
-    ...(token ? { Authorization: `Bearer ${token}` } : null),
+    // ...(token ? { Authorization: `Bearer ${token}` } : null),
     "Content-Type": "application/json",
   };
   if (isFileUpload) {

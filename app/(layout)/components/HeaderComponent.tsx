@@ -16,7 +16,7 @@ export const HeaderComponent = () => {
   const pathname = usePathname();
 
   function handleLogout() {
-    storage.removeItem(STORAGE_KEY.TOKEN);
+    // storage.removeItem(STORAGE_KEY.TOKEN);
     storage.removeItem(STORAGE_KEY.NICKNAME);
     storage.removeItem(STORAGE_KEY.USERNAME);
     router.replace(`/login?redirect=${pathname}`);

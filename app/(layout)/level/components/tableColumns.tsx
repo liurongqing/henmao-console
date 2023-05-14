@@ -14,14 +14,12 @@ export const tableColumns = ({ handleDelete, handleEditModal }: IParams) => {
       key: "level",
     },
     {
-      title: "类型",
-      dataIndex: "type",
-      key: "type",
-    },
-    {
-      title: "帧数",
-      dataIndex: "frame",
-      key: "frame",
+      title: "甜甜圈",
+      dataIndex: "donuts",
+      key: "donuts",
+      render(text) {
+        return JSON.stringify(text, null, 2);
+      },
     },
     {
       title: "倒计时间",

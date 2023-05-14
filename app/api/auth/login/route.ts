@@ -1,12 +1,13 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { LOGIN_API } from "@/consts";
 
 // 登录
 export async function POST(request: NextRequest) {
   const values = await request.json();
   try {
-    const res = await fetch("http://localhost:3002/auth/login", {
+    const res = await fetch(LOGIN_API, {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(values),
@@ -21,7 +22,7 @@ export async function POST(request: NextRequest) {
         name: "token",
         value: token,
         httpOnly: true,
-        maxAge: 7200 // 与服务端一致
+        maxAge: 7200, // 与服务端一致
       });
     }
     return NextResponse.json(data);

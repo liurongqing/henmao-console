@@ -1,10 +1,11 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { CHECK_LOGIN_API } from "@/consts";
 
 async function checkLogin(token) {
   try {
-    const res = await fetch("http://localhost:3002/auth/checkLogin", {
+    const res = await fetch(CHECK_LOGIN_API, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

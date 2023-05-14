@@ -24,6 +24,13 @@ middleware 无效
 - [ ] Breadcrumb 配置
 - [ ] modal 下的afterOpenChange  afterClose 会执行2次
 
+
+**bug**
+rewrites 里， body体数据无法传给后端，在 13.4.2 版本修复了
+https://github.com/vercel/next.js/issues/48040
+
+
+
 **完成**
 
 - [x] 退出登录，及显示昵称

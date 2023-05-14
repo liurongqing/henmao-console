@@ -23,7 +23,7 @@ export default function LoginComponent({}) {
       .then(async (values) => {
         const data = await request("/api/auth/login", values, "post");
         const { token, nickname, username } = data;
-        storage.setItem(STORAGE_KEY.TOKEN, token);
+        // storage.setItem(STORAGE_KEY.TOKEN, token);
         storage.setItem(STORAGE_KEY.NICKNAME, nickname);
         storage.setItem(STORAGE_KEY.USERNAME, username);
 

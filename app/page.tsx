@@ -1,3 +1,4 @@
-export default function HomePage() {
-  return <div>这就是首页</div>;
+import { redirect } from "next/navigation";
+export default async function HomePage() {
+  redirect("/level");
 }
