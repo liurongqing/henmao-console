@@ -52,7 +52,7 @@ export const ModalComponent = () => {
     .map((_, i) => ({ value: i + 1, label: (i + 1).toString() }));
 
   function afterOpenChange(open: boolean) {
-    console.log("rrest open", open);
+    // console.log("rrest open", open);
     if (open) {
       // 打开, 如果一样，就不处理【要不要这样做呢】
       form.setFieldsValue(state.initialForm);
@@ -78,7 +78,7 @@ export const ModalComponent = () => {
     >
       <Form className="mt-10" form={form} {...formItemLayout}>
         <Form.Item name="_id" hidden={true}>
-          <Input />
+          <InputNumber />
         </Form.Item>
         <Form.Item label="关卡" name="level" rules={[{ required: true }]}>
           <Input />
@@ -88,7 +88,12 @@ export const ModalComponent = () => {
             <>
               {fields.map(({ key, name, ...restField }) => {
                 return (
-                  <Form.Item className="mb-0" label="甜甜圈" key={key}>
+                  <Form.Item
+                    required
+                    className="mb-0 mr-10"
+                    label="甜甜圈"
+                    key={key}
+                  >
                     <div className="flex items-center">
                       <Form.Item
                         name={[name, "type"]}
@@ -119,10 +124,12 @@ export const ModalComponent = () => {
                       >
                         <InputNumber className="!w-20" placeholder="数量" />
                       </Form.Item>
-                      <MinusCircleOutlined
-                        className="w-8"
-                        onClick={() => remove(name)}
-                      />
+                      <Form.Item>
+                        <MinusCircleOutlined
+                          className="w-8"
+                          onClick={() => remove(name)}
+                        />
+                      </Form.Item>
                     </div>
                   </Form.Item>
                 );
@@ -142,7 +149,7 @@ export const ModalComponent = () => {
           )}
         </Form.List>
         <Form.Item label="倒计时" name="time" rules={[{ required: true }]}>
-          <Input />
+          <InputNumber />
         </Form.Item>
       </Form>
     </Modal>

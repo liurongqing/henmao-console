@@ -11,8 +11,8 @@ export const initialState = {
     donuts: [
       { type: 1, frame: 2 },
       { type: 2, frame: 3 },
-      { type: 3, frame: 9 },
+      { type: 3, frame: 4 },
     ],
-    time: 60,
+    time: 120,
   },
 };

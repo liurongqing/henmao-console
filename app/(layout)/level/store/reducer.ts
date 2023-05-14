@@ -38,7 +38,7 @@ export const reducer = (state: any, action: any) => {
     case "refresh": {
       return {
         ...state,
-        current: 1,
+        // current: 1,
         refCount: state.refCount + 1,
       };
     }
