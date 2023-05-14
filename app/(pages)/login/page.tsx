@@ -24,8 +24,6 @@ export default function LoginComponent({}) {
         const data = await request("/api/auth/login", values, "post");
         const { token, nickname, username } = data;
         // storage.setItem(STORAGE_KEY.TOKEN, token);
-        storage.setItem(STORAGE_KEY.NICKNAME, nickname);
-        storage.setItem(STORAGE_KEY.USERNAME, username);
 
         message.success({
           content: "登录成功！",

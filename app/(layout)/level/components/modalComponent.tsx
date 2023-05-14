@@ -90,36 +90,29 @@ export const ModalComponent = () => {
                 return (
                   <Form.Item
                     required
-                    className="mb-0 mr-10"
+                    className="mb-0"
+                    wrapperCol={{ span: 19 }}
                     label="甜甜圈"
                     key={key}
                   >
-                    <div className="flex items-center">
+                    <div className="flex">
                       <Form.Item
+                        className="flex-1 mr-2"
                         name={[name, "type"]}
-                        className="mr-2"
                         rules={[{ required: true, message: "请输入" }]}
                       >
-                        <Select
-                          options={types}
-                          className="!w-24"
-                          placeholder="type"
-                        ></Select>
+                        <Select options={types} placeholder="type"></Select>
                       </Form.Item>
                       <Form.Item
+                        className="flex-1 mr-2"
                         name={[name, "frame"]}
-                        className="mr-2"
                         rules={[{ required: true, message: "请输入" }]}
                       >
-                        <Select
-                          options={frames}
-                          className="!w-24"
-                          placeholder="frame"
-                        ></Select>
+                        <Select options={frames} placeholder="frame"></Select>
                       </Form.Item>
                       <Form.Item
-                        name={[name, "num"]}
                         className="mr-2"
+                        name={[name, "num"]}
                         rules={[{ required: true, message: "请输入" }]}
                       >
                         <InputNumber className="!w-20" placeholder="数量" />

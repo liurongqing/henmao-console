@@ -17,9 +17,8 @@ export const HeaderComponent = () => {
 
   function handleLogout() {
     // storage.removeItem(STORAGE_KEY.TOKEN);
-    storage.removeItem(STORAGE_KEY.NICKNAME);
-    storage.removeItem(STORAGE_KEY.USERNAME);
-    router.replace(`/login?redirect=${pathname}`);
+    // 此处应该调用  next/api 的 logout 来清cookie，然后跳转
+    // router.replace(`/login?redirect=${pathname}`);
   }
 
   // const nickname: string = storage.getItem(STORAGE_KEY.NICKNAME);
