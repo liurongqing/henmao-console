@@ -3,12 +3,6 @@ export const LEVEL_API = `/henmao-api/level`;
 export const LOGIN_API = `${ROOT_API}/auth/login`;
 export const CHECK_LOGIN_API = `${ROOT_API}/auth/checkLogin`;
 
-export const STORAGE_KEY = {
-  TOKEN: "TOKEN",
-  NICKNAME: "NICKNAME",
-  USERNAME: "USERNAME",
-};
-
 export const PAGINATION = {
   current: 1,
   pageSize: 10,

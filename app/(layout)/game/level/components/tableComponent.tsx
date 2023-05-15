@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Table, Pagination, Skeleton, Empty, message } from "antd";
 import useSWR from "swr";
-import { tableColumns } from "./tableColumns";
+import { tableColumns } from "../tableColumns";
 import { ModalComponent } from "./modalComponent";
 import { request, urlToString } from "@/utils";
 import { LEVEL_API, PAGINATION } from "@/consts";

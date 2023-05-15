@@ -1,6 +1,5 @@
 "use client";
 
-// import { Skeleton } from "antd";
 import ProSkeleton from "@ant-design/pro-skeleton";
 
 const Loading = () => {

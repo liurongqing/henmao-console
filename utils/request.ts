@@ -1,6 +1,7 @@
 import { message } from "antd";
-import { STORAGE_KEY } from "@/consts";
-import { storage } from "@/utils";
+import { parse, stringify } from "querystring";
+
+// console.log("parse", { parse, stringify: stringify({ a: 1, b: 2 }) });
 
 // 验证 http 状态
 async function checkStatus(res: any) {
@@ -44,7 +45,8 @@ export const request = async (
 
   // 处理URL
   if (["get", "delete"].includes(method) && Object.keys(data).length > 0) {
-    url += "?" + new URLSearchParams(data).toString();
+    // url += "?" + new URLSearchParams(data).toString();
+    url += "?" + stringify(data);
   }
 
   // 处理 header
@@ -76,8 +78,8 @@ export const request = async (
     // 失败统一处理
     if (error?.status === 401) {
       message.warning("请重新登录", 1.5, () => {
-        // const a = redirect("/login");
-        // window.location.replace("/login");
+        // 不知道有没有办法，用 history 方式
+        window.location.replace("/login?redirect=/game/level");
       });
       return;
     }

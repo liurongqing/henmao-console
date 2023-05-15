@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { layoutDefaultProps } from "./layoutDefaultProps";
 
-dayjs.locale("en");
+dayjs.locale("cn");
 
 const RootLayout = ({ children }) => {
   console.log("layout层 layout...");
@@ -47,23 +47,7 @@ const RootLayout = ({ children }) => {
         );
       },
     },
-    // breadcrumbRender(routes) {
-    //   console.log("routers", routes);
-    //   return <h1>renderer</h1>;
-    //   if (routes?.length > 0) {
-    //     const items = routes.map((route) => ({
-    //       title: route.title,
-    //     }));
 
-    //     console.log("items", items);
-    //     // return <Breadcrumb items={items} />;
-    //     return <h1>items.../adfadf/adsfaf</h1>;
-    //   }
-    //   return null;
-    // },
-    // breadcrumbProps: {
-    //   items: [{ title: "123" }, { title: "2222" }],
-    // },
     onMenuHeaderClick: () => {
       // 点击 logo，如果 pathname 不是 / 则，跳转到 /
       if (pathname !== "/") {
