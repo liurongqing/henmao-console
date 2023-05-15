@@ -81,7 +81,7 @@ export const request = async (
         // 不知道有没有办法，用 history 方式
         window.location.replace("/login?redirect=/game/level");
       });
-      return;
+      throw error;
     }
 
     message.error(error?.message);

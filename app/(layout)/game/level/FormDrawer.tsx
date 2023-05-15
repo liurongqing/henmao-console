@@ -48,16 +48,16 @@ const FormDrawer = forwardRef((props, actionRef: any) => {
     });
   };
 
-
   function afterOpenChange(open: boolean) {
     console.log("rrest open", open);
     if (open) {
       // 打开, 如果一样，就不处理【要不要这样做呢】
-      // form.setFieldsValue(state.initialForm);
+      form.setFieldsValue(useLevel.formData);
     } else {
       // 关闭
-      // form.resetFields();
-      // dispatch({ type: "reset" });
+      console.log("关闭重置");
+      form.resetFields();
+      useLevel.onReset();
     }
   }
   return (
@@ -66,7 +66,6 @@ const FormDrawer = forwardRef((props, actionRef: any) => {
       onClose={useLevel.onClose}
       open={useLevel.isOpen}
       size="large"
-      destroyOnClose={true}
       afterOpenChange={afterOpenChange}
       footer={
         <Space className="flex justify-end">
