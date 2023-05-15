@@ -1,5 +1,5 @@
 "use client";
-import { ConfigProvider, Dropdown } from "antd";
+import { ConfigProvider, Dropdown, Breadcrumb } from "antd";
 import { ProLayout, PageContainer, ProCard } from "@ant-design/pro-components";
 import { AiOutlineLogout } from "react-icons/ai";
 import zhCN from "antd/locale/zh_CN";
@@ -47,6 +47,23 @@ const RootLayout = ({ children }) => {
         );
       },
     },
+    // breadcrumbRender(routes) {
+    //   console.log("routers", routes);
+    //   return <h1>renderer</h1>;
+    //   if (routes?.length > 0) {
+    //     const items = routes.map((route) => ({
+    //       title: route.title,
+    //     }));
+
+    //     console.log("items", items);
+    //     // return <Breadcrumb items={items} />;
+    //     return <h1>items.../adfadf/adsfaf</h1>;
+    //   }
+    //   return null;
+    // },
+    // breadcrumbProps: {
+    //   items: [{ title: "123" }, { title: "2222" }],
+    // },
     onMenuHeaderClick: () => {
       // 点击 logo，如果 pathname 不是 / 则，跳转到 /
       if (pathname !== "/") {
@@ -57,8 +74,17 @@ const RootLayout = ({ children }) => {
   return (
     <ConfigProvider locale={zhCN}>
       <ProLayout {...layoutDefaultProps} {...layoutProps}>
-        <PageContainer fixedHeader>
-          <ProCard className="min-h-[calc(100vh-120px)]">{children}</ProCard>
+        <PageContainer
+          fixedHeader
+          // 解决面包屑点击出错问题，只能自定义，后期看有没有参数处理
+          breadcrumbRender={(_, breadcrumbDom: any) => {
+            let items = breadcrumbDom?.props?.items;
+            if (!items) return null;
+            items = items.map((item) => ({ title: item.title }));
+            return <Breadcrumb items={items} />;
+          }}
+        >
+          <ProCard className="min-h-[calc(100vh-150px)]">{children}</ProCard>
         </PageContainer>
       </ProLayout>
     </ConfigProvider>

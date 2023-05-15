@@ -5,7 +5,7 @@ import Link from "next/link";
 export const layoutDefaultProps = {
   layout: "top",
   fixedHeader: true,
-  // pageTitleRender: false,
+  pageTitleRender: false,
   title: "HenMao",
   logo: <GiCat color="black" />,
   // menuItemRender: (item, dom) => <Link href={item.path}>{dom}</Link>,
@@ -18,12 +18,12 @@ export const layoutDefaultProps = {
         icon: <AiFillDashboard />,
       },
       {
-        path: "/",
+        path: "/game",
         name: "游戏管理",
         icon: <AiOutlineSetting />,
         routes: [
           {
-            path: "/level",
+            path: "/game/level",
             name: "关卡列表",
           },
         ],
