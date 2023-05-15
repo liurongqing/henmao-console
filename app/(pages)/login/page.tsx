@@ -15,6 +15,7 @@ import { Divider, Space, Tabs, message } from "antd";
 import { request } from "@/utils";
 
 const Login = () => {
+  console.log("login 页面");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
