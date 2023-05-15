@@ -11,7 +11,6 @@ import { Dropdown } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import defaultProps from "./data";
 
-import "./globals.css";
 // import "../public/antd.min.css";
 // import { redirect } from "next/navigation";
 // export default async function HomePage() {
