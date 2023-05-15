@@ -1,15 +1,7 @@
 import {
-  AiFillChrome,
-  // CrownFilled
-  // CrownFilled,
-  // SmileFilled,
-  // SmileFilled,
-  AiFillSmile
-
-  // ChromeFilled,
-  // CrownFilled,
-  // SmileFilled,
-  // TabletFilled,
+  AiOutlineSmile,
+  AiOutlineCrown,
+  AiOutlineTablet,
 } from "react-icons/ai";
 
 export default {
@@ -19,41 +11,34 @@ export default {
       {
         path: "/level",
         name: "欢迎",
-        // icon: <AiFillChrome />,
-        // component: './Level',
+        icon: <AiOutlineSmile />,
       },
       {
         path: "/admin",
         name: "管理页",
-        // icon: <CrownFilled />,
-        // access: 'canAdmin',
-        component: "./Admin",
+        icon: <AiOutlineCrown />,
         routes: [
           {
             path: "/admin/sub-page1",
             name: "一级页面",
-            icon: "https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg",
-            component: "./Welcome",
+            icon: <AiOutlineCrown />,
           },
           {
             path: "/admin/sub-page2",
             name: "二级页面",
-            // icon: <CrownFilled />,
-            // component: './Welcome',
+            icon: <AiOutlineCrown />,
           },
           {
             path: "/admin/sub-page3",
             name: "三级页面",
-            // icon: <CrownFilled />,
-            // component: './Welcome',
+            icon: <AiOutlineCrown />,
           },
         ],
       },
       {
         name: "列表页",
-        // icon: <TabletFilled />,
+        icon: <AiOutlineTablet />,
         path: "/list",
-        component: "./ListTableList",
         routes: [
           {
             path: "/list/sub-page",
@@ -100,9 +85,6 @@ export default {
         // icon: <ChromeFilled />,
       },
     ],
-  },
-  location: {
-    pathname: "/",
   },
   appList: [
     {

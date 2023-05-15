@@ -39,6 +39,9 @@ procomponent
 3. 使用react-icons 图标
 
 
+添加 favicon.ico
+
+
 **完成**
 
 - [x] 退出登录，及显示昵称

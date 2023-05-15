@@ -1,9 +1,9 @@
 import ClientOnly from "./ClientOnly";
 import "./globals.css";
 
-const Layout = ({ children }) => {
+const RootLayout = ({ children }) => {
   return (
-    <html>
+    <html lang="en">
       <body>
         <ClientOnly>{children}</ClientOnly>
       </body>
@@ -11,4 +11,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default RootLayout;
