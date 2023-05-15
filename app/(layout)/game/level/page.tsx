@@ -1,6 +1,12 @@
 "use client";
-const Level = () => {
+
+const Level = async () => {
   console.log("level...");
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve(true);
+    }, 3000)
+  );
   return <h1>Level</h1>;
 };
 
