@@ -16,7 +16,7 @@ import { request } from "@/utils";
 import { LEVEL_API } from "@/consts";
 import useLevelModal from "./useLevelModal";
 
-const FormDrawer = forwardRef((props, actionRef: any) => {
+export default function FormDrawer({ actionRef }) {
   // console.log("ref", { ref });
   const useLevel = useLevelModal();
   const [form] = Form.useForm();
@@ -147,6 +147,4 @@ const FormDrawer = forwardRef((props, actionRef: any) => {
       </Form>
     </Drawer>
   );
-});
-
-export default FormDrawer;
+}

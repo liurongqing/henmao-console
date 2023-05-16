@@ -17,6 +17,7 @@ export async function POST(request: NextRequest) {
     if (data.code === 0) {
       const { token } = data.data;
       // 不知道为什么是只读，但是可以设置
+      // cookie 有效时间2小时
       // @ts-ignore
       cookies().set({
         name: "token",
