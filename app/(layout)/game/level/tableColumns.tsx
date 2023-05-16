@@ -8,7 +8,7 @@ interface IParams {
   handleEditModal: (row: any) => void;
 }
 
-export const tableColumns = () => {
+export const tableColumns = ({ handleEditModal, handleDelete }) => {
   return [
     {
       title: "关卡",
@@ -60,7 +60,7 @@ export const tableColumns = () => {
           <Space split={<Divider type="vertical" />}>
             <Typography.Link
               onClick={() => {
-                // handleEditModal(row);
+                handleEditModal(record, action);
               }}
             >
               修改
@@ -68,7 +68,7 @@ export const tableColumns = () => {
             <Popconfirm
               title="确定删除?"
               onConfirm={() => {
-                // handleDelete(row);
+                handleDelete(record, action);
               }}
             >
               <Typography.Link>删除</Typography.Link>

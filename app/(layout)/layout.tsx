@@ -1,5 +1,5 @@
 "use client";
-import { ConfigProvider, Dropdown, Breadcrumb } from "antd";
+import { ConfigProvider, Dropdown, Breadcrumb, Alert, Spin } from "antd";
 import { ProLayout, PageContainer, ProCard } from "@ant-design/pro-components";
 import { AiOutlineLogout } from "react-icons/ai";
 import zhCN from "antd/locale/zh_CN";
@@ -8,11 +8,11 @@ import "dayjs/locale/zh-cn";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { layoutDefaultProps } from "./layoutDefaultProps";
+import { useState, useTransition } from "react";
 
 dayjs.locale("cn");
 
 const RootLayout = ({ children }) => {
-  console.log("layout层 layout...");
   const pathname = usePathname();
   const router = useRouter();
 
@@ -20,7 +20,6 @@ const RootLayout = ({ children }) => {
     console.log("退出登录");
   };
 
-  console.log("pathname", pathname);
   const layoutProps = {
     location: { pathname },
     menuItemRender: (item, dom) => <Link href={item.path}>{dom}</Link>,
@@ -47,7 +46,6 @@ const RootLayout = ({ children }) => {
         );
       },
     },
-
     onMenuHeaderClick: () => {
       // 点击 logo，如果 pathname 不是 / 则，跳转到 /
       if (pathname !== "/") {
@@ -55,6 +53,8 @@ const RootLayout = ({ children }) => {
       }
     },
   };
+
+
   return (
     <ConfigProvider locale={zhCN}>
       {/* @ts-ignore */}

@@ -15,9 +15,29 @@ middleware 无效
 **不着急**
 
 - [ ] 后端接口从数据库中读数据，登录信息
-- [ ] 登录应该有个 checkLogin， 登录之前做判断，在页面之前，或是 Login 之前【完成一半】
-- [ ] Breadcrumb 配置
-- [ ] modal 下的 afterOpenChange afterClose 会执行 2 次
+- [ ] 保存列显示、固定、排序信息，针对每个用户
+
+
+- [ ] 菜单切换时，有时要等好久，而且没有反应提示
+  在 prolayout中menuItemRender属性做了处理, 以后再研究
+  ```ts
+  {
+    menuItemRender: (item, dom) => {
+      // <Link href={item.path}>{dom}</Link>
+      return (
+        <div
+          onClick={() => {
+            startTransition(() => {
+              setPathname(item.path);
+            });
+          }}
+        >
+          {dom}
+        </div>
+      );
+    },
+  }
+  ```
 
 **bug**
 rewrites 里， body 体数据无法传给后端，在 13.4.2 版本修复了
@@ -50,6 +70,7 @@ export const metadata: Metadata = {
 };
 ```
 
+
 **完成**
 
 - [x] 退出登录，及显示昵称
@@ -69,3 +90,6 @@ export const metadata: Metadata = {
       参考地址：https://ant.design/docs/react/customize-theme-cn
 - [x] 无限调用 store 设置，然后卡死
       配置 level/page.tsx 不为 async 函数，就不会死循环了，也不用添加 loading.tsx
+- [x] modal 下的 afterOpenChange afterClose 会执行 2 次
+  升级 antd ，已经修复了
+- [x] 登录应该有个 checkLogin， 登录之前做判断，在页面之前，或是 Login 之前【完成一半】

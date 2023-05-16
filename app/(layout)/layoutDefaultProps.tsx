@@ -6,7 +6,7 @@ export const layoutDefaultProps = {
   layout: "top",
   fixedHeader: true,
   pageTitleRender: false,
-  title: "HenMao1",
+  title: "HenMao",
   logo: <GiCat color="black" />,
   // menuItemRender: (item, dom) => <Link href={item.path}>{dom}</Link>,
   route: {

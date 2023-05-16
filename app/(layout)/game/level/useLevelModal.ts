@@ -19,6 +19,7 @@ interface LevelModalStore {
   onOpen: () => void;
   onClose: () => void;
   onReset: () => void;
+  setFormData: (formData) => void;
 }
 
 const useLevelModal = create<LevelModalStore>((set) => ({
@@ -27,6 +28,7 @@ const useLevelModal = create<LevelModalStore>((set) => ({
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
   onReset: () => set({ formData: { ...initialForm } }),
+  setFormData: (formData) => set({ formData: { ...formData } }),
 }));
 
 export default useLevelModal;

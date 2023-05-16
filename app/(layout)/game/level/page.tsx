@@ -8,7 +8,7 @@ import {
   ProFormSelect,
   ProFormText,
 } from "@ant-design/pro-components";
-import { Button, Form } from "antd";
+import { Button, Form, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { request } from "@/utils";
 import { LEVEL_API } from "@/consts";
@@ -19,6 +19,7 @@ import { useRef } from "react";
 
 export default function Level() {
   const useLevel = useLevelModal();
+  const ref = useRef();
 
   const getList = async (params) => {
     // console.log("params", { params });
@@ -32,7 +33,21 @@ export default function Level() {
     };
   };
 
-  const ref = useRef();
+  // 删除
+  const handleDelete = async (row: any, action) => {
+    await request(`${LEVEL_API}/${row._id}`, undefined, "delete");
+    // 删除成功
+    message.success("删除成功");
+    action?.reload();
+  };
+
+  //修改
+  const handleEditModal = async (row: any) => {
+    useLevel.setFormData(row);
+    useLevel.onOpen();
+  };
+
+  const columns = tableColumns({ handleEditModal, handleDelete });
 
   return (
     <>
@@ -41,7 +56,7 @@ export default function Level() {
         headerTitle="关卡列表"
         cardBordered
         rowKey="_id"
-        columns={tableColumns()}
+        columns={columns}
         request={getList}
         toolBarRender={() => [
           <Button

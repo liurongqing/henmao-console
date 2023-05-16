@@ -62,7 +62,7 @@ const FormDrawer = forwardRef((props, actionRef: any) => {
   }
   return (
     <Drawer
-      title="新建关卡"
+      title={useLevel.formData?._id ? "修改关卡" : "新建关卡"}
       onClose={useLevel.onClose}
       open={useLevel.isOpen}
       size="large"
