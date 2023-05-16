@@ -36,6 +36,7 @@ export const tableColumns = ({ handleEditModal, handleDelete }) => {
       key: "createdAt",
       dataIndex: "createdAt",
       hideInSearch: true,
+      width: 150,
       render(text: any) {
         if (!text) return "";
         return dayjs(text).format("YYYY-MM-DD HH:mm:ss");
@@ -46,6 +47,7 @@ export const tableColumns = ({ handleEditModal, handleDelete }) => {
       key: "updatedAt",
       dataIndex: "updatedAt",
       hideInSearch: true,
+      width: 150,
       render(text: any) {
         if (!text) return "";
         return dayjs(text).format("YYYY-MM-DD HH:mm:ss");
@@ -55,6 +57,10 @@ export const tableColumns = ({ handleEditModal, handleDelete }) => {
       title: "操作",
       key: "action",
       hideInSearch: true,
+      width: 150,
+      fixed: "right" as "right",
+      // width: 150,
+      // fixed: "right",
       render: (text, record, _, action) => {
         return (
           <Space split={<Divider type="vertical" />}>

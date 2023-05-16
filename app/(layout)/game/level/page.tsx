@@ -7,6 +7,7 @@ import {
   ProFormDateRangePicker,
   ProFormSelect,
   ProFormText,
+  ProColumns,
 } from "@ant-design/pro-components";
 import { Button, Form, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
@@ -15,11 +16,16 @@ import { LEVEL_API } from "@/consts";
 import { tableColumns } from "./tableColumns";
 import useLevelModal from "./useLevelModal";
 import FormDrawer from "./FormDrawer";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Level() {
   const useLevel = useLevelModal();
   const ref = useRef();
+  const [columnsState, setColumnsState] = useState<any>({
+    level: {
+      show: false,
+    },
+  });
 
   const getList = async (params) => {
     // console.log("params", { params });
@@ -47,6 +53,13 @@ export default function Level() {
     useLevel.onOpen();
   };
 
+  const handleChangeColumnsState = async (state) => {
+    // 保存排序
+    // 保存显隐
+    console.log("state", state);
+    setColumnsState(state);
+  };
+
   const columns = tableColumns({ handleEditModal, handleDelete });
 
   return (
@@ -58,6 +71,10 @@ export default function Level() {
         rowKey="_id"
         columns={columns}
         request={getList}
+        columnsState={{
+          value: columnsState,
+          onChange: handleChangeColumnsState,
+        }}
         toolBarRender={() => [
           <Button
             onClick={useLevel.onOpen}
@@ -68,42 +85,9 @@ export default function Level() {
             新建关卡
           </Button>,
         ]}
+        scroll={{ x: "max-content" }}
       />
       <FormDrawer ref={ref} />
     </>
   );
 }
-
-// import { useReducer } from "react";
-// import { Card } from "antd";
-// import { Provider } from "./store";
-// import {
-//   TableComponent,
-//   SearchComponent,
-//   ActionComponent,
-//   ModalComponent,
-// } from "./components";
-
-// export default async function Level() {
-//   return (
-//     <Provider>
-//       {/* 搜索区域 */}
-//       <Card>
-//         <SearchComponent />
-//       </Card>
-
-//       {/* 表格区域 */}
-//       <Card
-//         title="关卡详情"
-//         headStyle={{ borderBottom: 0 }}
-//         bodyStyle={{ paddingTop: 0 }}
-//         extra={<ActionComponent />}
-//         className="mt-4"
-//       >
-//         <TableComponent />
-//       </Card>
-
-//       <ModalComponent />
-//     </Provider>
-//   );
-// }
