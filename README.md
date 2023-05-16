@@ -34,6 +34,22 @@ loading 要使用 use client， page 也使用 use client，要不就会死循�
 # 生成图片
 /api/tool/generate/image 
 
+配置 favicon 图片
+```ts
+export const metadata: Metadata = {
+  icons: [
+    {
+      rel: "icon",
+      url: "/icon.png",
+    },
+    {
+      rel: "apple-touch-icon",
+      url: "/icon.png",
+    },
+  ],
+};
+```
+
 **完成**
 
 - [x] 退出登录，及显示昵称
