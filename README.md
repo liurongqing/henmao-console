@@ -31,6 +31,8 @@ procomponent
 
 loading 要使用 use client， page 也使用 use client，要不就会死循环
 添加 favicon.ico
+# 生成图片
+/api/tool/generate/image 
 
 **完成**
 

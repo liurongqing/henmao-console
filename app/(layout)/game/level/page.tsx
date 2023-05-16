@@ -17,7 +17,7 @@ import useLevelModal from "./useLevelModal";
 import FormDrawer from "./FormDrawer";
 import { useRef } from "react";
 
-const Level = () => {
+export default function Level() {
   const useLevel = useLevelModal();
 
   const getList = async (params) => {
@@ -57,9 +57,7 @@ const Level = () => {
       <FormDrawer ref={ref} />
     </>
   );
-};
-
-export default Level;
+}
 
 // import { useReducer } from "react";
 // import { Card } from "antd";

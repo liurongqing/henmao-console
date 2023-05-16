@@ -57,6 +57,7 @@ const RootLayout = ({ children }) => {
   };
   return (
     <ConfigProvider locale={zhCN}>
+      {/* @ts-ignore */}
       <ProLayout {...layoutDefaultProps} {...layoutProps}>
         <PageContainer
           fixedHeader
