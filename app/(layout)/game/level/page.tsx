@@ -22,9 +22,9 @@ export default function Level() {
   const useLevel = useLevelModal();
   const ref = useRef();
   const [columnsState, setColumnsState] = useState<any>({
-    level: {
-      show: false,
-    },
+    // level: {
+    //   show: false,
+    // },
   });
 
   const getList = async (params) => {
