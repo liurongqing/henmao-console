@@ -48,7 +48,7 @@ const Login = () => {
     console.log("formRef", formRef);
     formRef.current.setFieldsValue({
       username: "liurongqing",
-      password: "123456",
+      password: "binbin1203",
     });
   }, []);
   return (

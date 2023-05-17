@@ -79,7 +79,7 @@ export const request = async (
     if (error?.status === 401) {
       message.warning("请重新登录", 1.5, () => {
         // 不知道有没有办法，用 history 方式
-        window.location.replace("/login?redirect=/game/level");
+        // window.location.replace("/login?redirect=/game/level");
       });
       throw error;
     }

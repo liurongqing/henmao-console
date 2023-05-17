@@ -26,17 +26,13 @@ const RootLayout = ({ children }) => {
   };
 
   const getUserInfo = async () => {
-    // return await request(USER_API);
-    return {
-      src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
-      title: "我是你的小甜心",
-    };
+    const { nickname, avatarUrl } = await request(USER_API);
+    return { nickname, avatarUrl };
   };
 
   useEffect(() => {
     async function getUserInfoWrapper() {
       const userInfo = await getUserInfo();
-      console.log("userInfo", { userInfo });
       setUserInfo(userInfo);
     }
     getUserInfoWrapper();
@@ -47,9 +43,9 @@ const RootLayout = ({ children }) => {
     menuItemRender: (item, dom) => <Link href={item.path}>{dom}</Link>,
     avatarProps: {
       // src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
-      src: userInfo.src,
+      src: userInfo.avatarUrl,
       size: "small",
-      title: userInfo.title,
+      title: userInfo.nickname,
       render: (props, dom) => {
         return (
           <Dropdown
@@ -57,7 +53,7 @@ const RootLayout = ({ children }) => {
               items: [
                 {
                   key: "logout",
-                  icon: <AiOutlineLogout />,
+                  icon: <AiOutlineLogout color="#dc2626" />,
                   label: "退出登录",
                   onClick: handleLogout,
                 },

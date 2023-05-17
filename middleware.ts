@@ -25,7 +25,6 @@ async function checkLogin(token) {
 
 // 验证是否登录
 export async function middleware(request: NextRequest) {
-  return;
   const token: any = request.cookies.get("token");
   const isLogin = await checkLogin(token?.value);
   console.log("isLogin", { isLogin });
