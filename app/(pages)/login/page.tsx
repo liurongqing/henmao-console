@@ -28,10 +28,10 @@ const Login = () => {
         content: "登录成功！",
         duration: 1,
         onClose() {
-          setLoading(false);
           // 如果有跳转链接，则加上， redirect=/aa/aa
           const redirect = searchParams.get("redirect") || "/";
           router.replace(redirect);
+          setLoading(false);
         },
       });
     } catch {

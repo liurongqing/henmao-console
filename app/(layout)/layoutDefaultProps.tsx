@@ -8,7 +8,7 @@ export const layoutDefaultProps = {
   pageTitleRender: false,
   title: "HenMao",
   logo: <GiCat color="black" />,
-  // menuItemRender: (item, dom) => <Link href={item.path}>{dom}</Link>,
+  footerRender: () => <div className="text-center text-gray-500 py-4">@2023 厦门市狠猫科技有限公司版权所有</div>,
   route: {
     // path: "/",
     routes: [

@@ -7,26 +7,49 @@ import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
+import { request } from "@/utils";
+import { USER_API } from "@/consts";
 import { layoutDefaultProps } from "./layoutDefaultProps";
-import { useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 
 dayjs.locale("cn");
 
 const RootLayout = ({ children }) => {
   const pathname = usePathname();
   const router = useRouter();
+  const [userInfo, setUserInfo] = useState<any>({});
 
-  const handleLogout = () => {
-    console.log("退出登录");
+  const handleLogout = async () => {
+    await request("/api/auth/logout", undefined, "post");
+    router.replace(`/login?redirect=${pathname}`);
+    // console.log("退出登录");
   };
+
+  const getUserInfo = async () => {
+    // return await request(USER_API);
+    return {
+      src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
+      title: "我是你的小甜心",
+    };
+  };
+
+  useEffect(() => {
+    async function getUserInfoWrapper() {
+      const userInfo = await getUserInfo();
+      console.log("userInfo", { userInfo });
+      setUserInfo(userInfo);
+    }
+    getUserInfoWrapper();
+  }, []);
 
   const layoutProps = {
     location: { pathname },
     menuItemRender: (item, dom) => <Link href={item.path}>{dom}</Link>,
     avatarProps: {
-      src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
+      // src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
+      src: userInfo.src,
       size: "small",
-      title: "一个男孩子",
+      title: userInfo.title,
       render: (props, dom) => {
         return (
           <Dropdown
@@ -54,7 +77,6 @@ const RootLayout = ({ children }) => {
     },
   };
 
-
   return (
     <ConfigProvider locale={zhCN}>
       {/* @ts-ignore */}
@@ -69,7 +91,7 @@ const RootLayout = ({ children }) => {
             return <Breadcrumb items={items} />;
           }}
         >
-          <ProCard className="min-h-[calc(100vh-150px)]">{children}</ProCard>
+          <ProCard className="min-h-[calc(100vh-200px)]">{children}</ProCard>
         </PageContainer>
       </ProLayout>
     </ConfigProvider>
