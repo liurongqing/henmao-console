@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "deploy": "pm2 deploy production",
     "1predev": "ts-node --project ./tsconfig.node.json ./scripts/genAntdCss.tsx",
     "1prebuild": "cross-env NODE_ENV=production ts-node --project ./tsconfig.node.json ./scripts/genAntdCss.tsx"
   },
