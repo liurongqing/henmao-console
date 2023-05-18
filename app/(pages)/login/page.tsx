@@ -32,7 +32,7 @@ const Login = () => {
           // 如果有跳转链接，则加上， redirect=/aa/aa
           const redirect = searchParams.get("redirect") || "/";
           router.replace(redirect);
-          setLoading(false);
+          // setLoading(false); // 跳转太慢， 这个loading不能去
         },
       });
     } catch {
