@@ -39,6 +39,10 @@ export const layoutDefaultProps = {
             path: "/game/level",
             name: "关卡列表",
           },
+          {
+            path: "/game/user",
+            name: "用户列表",
+          },
         ],
       },
     ],
