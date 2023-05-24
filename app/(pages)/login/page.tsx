@@ -19,7 +19,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const formRef = useRef<any>(null);
 
   const handleLogin = async (values) => {
     setLoading(true);
@@ -44,16 +43,8 @@ const Login = () => {
     message.warning("暂不支持，感谢关注！");
   };
 
-  useEffect(() => {
-    console.log("formRef", formRef);
-    formRef.current.setFieldsValue({
-      username: "liurongqing",
-      password: "binbin1203",
-    });
-  }, []);
   return (
     <LoginFormPage
-      formRef={formRef}
       backgroundImageUrl="https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png"
       logo={<GiCat size={40} />}
       title="HenMao"
