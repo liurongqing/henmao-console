@@ -29,6 +29,7 @@ const Login = () => {
         duration: 1,
         onClose() {
           // 如果有跳转链接，则加上， redirect=/aa/aa
+          console.log("登录成功，准备跳转");
           const redirect = searchParams.get("redirect") || "/";
           router.replace(redirect);
           // setLoading(false); // 跳转太慢， 这个loading不能去

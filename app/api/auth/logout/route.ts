@@ -1,11 +1,8 @@
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
 // 退出登录
-export async function POST(request: NextRequest, response: NextResponse) {
-  // @ts-ignore
+export async function POST() {
   cookies().set({
     name: "token",
     value: "",
