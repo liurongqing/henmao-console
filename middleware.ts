@@ -21,7 +21,7 @@ async function checkLogin(token) {
 
     const data = await res.json();
     console.log("data 001", data);
-    return data.data;
+    return data?.data?._id;
   } catch {
     return null;
   }

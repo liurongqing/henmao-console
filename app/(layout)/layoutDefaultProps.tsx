@@ -1,5 +1,6 @@
 import { AiFillDashboard, AiOutlineSetting } from "react-icons/ai";
 import { GiCat } from "react-icons/gi";
+import { GrGamepad } from "react-icons/gr";
 import { Layout } from "antd";
 import Link from "next/link";
 const { Footer } = Layout;
@@ -33,15 +34,75 @@ export const layoutDefaultProps = {
       {
         path: "/game",
         name: "游戏管理",
+        icon: <GrGamepad />,
+        routes: [
+          // {
+          //   path: "/game/level",
+          //   name: "关卡列表",
+          // },
+          {
+            path: "/game/platform",
+            name: "游戏平台", // 目前只有微信
+          },
+          // {
+          //   path: "/game/user",
+          //   name: "用户列表",
+          // },
+          {
+            path: "/game/yummi",
+            name: "美味消一消",
+            routes: [
+              {
+                path: "/game/yummi/user",
+                name: "用户列表",
+              },
+              {
+                path: "/game/yummi/level",
+                name: "关卡管理",
+              },
+            ],
+          },
+          {
+            path: "/game/drawlots",
+            name: "抽个冰糖葫芦",
+            routes: [
+              {
+                path: "/game/drawlots/level",
+                name: "关卡管理",
+              },
+            ],
+          },
+          {
+            path: "/game/sudoku",
+            name: "数独迷题",
+            routes: [
+              {
+                path: "/game/sudoku/level",
+                name: "关卡管理",
+              },
+            ],
+          },
+          {
+            path: "/game/sliding",
+            name: "拼动滑图",
+            routes: [
+              {
+                path: "/game/sliding/level",
+                name: "关卡管理",
+              },
+            ],
+          },
+        ],
+      },
+
+      {
+        path: "/system",
+        name: "系统管理",
         icon: <AiOutlineSetting />,
         routes: [
           {
-            path: "/game/level",
-            name: "关卡列表",
-          },
-          {
-            path: "/game/user",
-            name: "用户列表",
+            path: "/system/user",
+            name: "管理员列表",
           },
         ],
       },

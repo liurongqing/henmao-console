@@ -2,24 +2,12 @@
 
 ## todo
 
-通过 middleware 使用
+不同游戏，还是区分一下不同的表吧
 
-middleware 无效
-
-**重要：**
-
-- [ ] 想想关卡需要的信息， 以及制作定时任务了
-- [ ] 部署到 vercel 上
-      openid
-
-**不着急**
-
-- [ ] 后端接口从数据库中读数据，登录信息
-- [ ] 保存列显示、固定、排序信息，针对每个用户
-
+wechatUser 微信小游戏用户表【里面字段再做区分来自哪个小游戏的用户】
 
 - [ ] 菜单切换时，有时要等好久，而且没有反应提示
-  在 prolayout中menuItemRender属性做了处理, 以后再研究
+      在 prolayout 中 menuItemRender 属性做了处理, 以后再研究
   ```ts
   {
     menuItemRender: (item, dom) => {
@@ -43,18 +31,17 @@ middleware 无效
 rewrites 里， body 体数据无法传给后端，在 13.4.2 版本修复了
 https://github.com/vercel/next.js/issues/48040
 
-procomponent
 
-1. 重写登录页
-2. 优化整体页面架构
-3. 使用 react-icons 图标
 
 loading 要使用 use client， page 也使用 use client，要不就会死循环
 添加 favicon.ico
+
 # 生成图片
-/api/tool/generate/image 
+
+/api/tool/generate/image
 
 配置 favicon 图片
+
 ```ts
 export const metadata: Metadata = {
   icons: [
@@ -69,7 +56,6 @@ export const metadata: Metadata = {
   ],
 };
 ```
-
 
 **完成**
 
@@ -91,5 +77,5 @@ export const metadata: Metadata = {
 - [x] 无限调用 store 设置，然后卡死
       配置 level/page.tsx 不为 async 函数，就不会死循环了，也不用添加 loading.tsx
 - [x] modal 下的 afterOpenChange afterClose 会执行 2 次
-  升级 antd ，已经修复了
+      升级 antd ，已经修复了
 - [x] 登录应该有个 checkLogin， 登录之前做判断，在页面之前，或是 Login 之前【完成一半】
