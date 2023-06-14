@@ -13,7 +13,7 @@ import {
 import { forwardRef } from "react";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { request } from "@/utils";
-import { LEVEL_API } from "@/consts";
+// import { LEVEL_API } from "@/consts";
 import useLevelModal from "./useLevelModal";
 
 export default function FormDrawer({ actionRef }) {
@@ -37,9 +37,9 @@ export default function FormDrawer({ actionRef }) {
   const handleOk = () => {
     form.validateFields().then(async (values) => {
       if (values._id) {
-        await request(`${LEVEL_API}/${values._id}`, values, "put");
+        // await request(`${LEVEL_API}/${values._id}`, values, "put");
       } else {
-        await request(LEVEL_API, values, "post");
+        // await request(LEVEL_API, values, "post");
       }
 
       message.success("操作成功");
