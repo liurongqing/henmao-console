@@ -36,6 +36,7 @@ export const request = async (
   method = "get",
   { headers = {}, timeout = 30_000, isFileUpload = false }: any = {}
 ) => {
+  // console.log(url, data, method);
   const controller = new AbortController();
   setTimeout(() => {
     controller.abort();

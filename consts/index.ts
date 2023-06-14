@@ -6,8 +6,9 @@ export const LEVEL_API = `/henmao-api/level`;
 export const USER_API = `/henmao-api/user`;
 export const WXUSER_API = `/henmao-api/wxuser`;
 
+// 接口都经过代理处理
 // 系统管理用户信息
-export const SYSTEM_USER_API = `${ROOT_API}/user-center/user`;
+export const SYSTEM_USER_API = "/user-center/user";
 
 export const PAGINATION = {
   current: 1,
