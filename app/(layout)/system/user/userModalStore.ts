@@ -4,13 +4,11 @@ import { create } from "zustand";
 
 const initialForm = {
   _id: "",
-  level: 1,
-  donuts: [
-    { type: 1, frame: 2 },
-    { type: 2, frame: 3 },
-    { type: 3, frame: 4 },
-  ],
-  time: 120,
+  username: "",
+  password1: "",
+  password2: "",
+  nickname: "",
+  avatarUrl: "",
 };
 
 interface LevelModalStore {

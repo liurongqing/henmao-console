@@ -12,14 +12,14 @@ import {
 import { Button, Form, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { request } from "@/utils";
-import { SYSTEM_USER_API } from "@/consts";
+import { USER_CENTER_USER_API } from "@/consts";
 import { tableColumns } from "./tableColumns";
-import useLevelModal from "./useLevelModal";
+import useModalStore from "./userModalStore";
 import FormDrawer from "./FormDrawer";
 import { useRef, useState } from "react";
 
 export default function Level() {
-  const useLevel = useLevelModal();
+  const useModal = useModalStore();
   const ref = useRef();
   const [columnsState, setColumnsState] = useState<any>({
     // level: {
@@ -28,8 +28,7 @@ export default function Level() {
   });
 
   const getList = async (params) => {
-    // console.log("params", { params });
-    const { list, total } = await request(SYSTEM_USER_API, {
+    const { list, total } = await request(USER_CENTER_USER_API, {
       ...params,
     });
     return {
@@ -41,7 +40,7 @@ export default function Level() {
 
   // 删除
   const handleDelete = async (row: any, action) => {
-    await request(`${SYSTEM_USER_API}/${row._id}`, undefined, "delete");
+    await request(`${USER_CENTER_USER_API}/${row._id}`, undefined, "delete");
     // 删除成功
     message.success("删除成功");
     action?.reload();
@@ -49,8 +48,8 @@ export default function Level() {
 
   //修改
   const handleEditModal = async (row: any) => {
-    useLevel.setFormData(row);
-    useLevel.onOpen();
+    useModal.setFormData(row);
+    useModal.onOpen();
   };
 
   const handleChangeColumnsState = async (state) => {
@@ -60,7 +59,7 @@ export default function Level() {
     setColumnsState(state);
   };
 
-  const columns = tableColumns({ handleEditModal, handleDelete });
+  const columns: any = tableColumns({ handleEditModal, handleDelete });
 
   return (
     <>
@@ -77,7 +76,7 @@ export default function Level() {
         }}
         toolBarRender={() => [
           <Button
-            onClick={useLevel.onOpen}
+            onClick={useModal.onOpen}
             key="button"
             type="primary"
             icon={<PlusOutlined />}

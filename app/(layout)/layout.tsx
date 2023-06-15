@@ -8,7 +8,7 @@ import "dayjs/locale/zh-cn";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { request } from "@/utils";
-import { SYSTEM_USER_API } from "@/consts";
+import { USER_CENTER_USER_API } from "@/consts";
 import { layoutDefaultProps } from "./layoutDefaultProps";
 import { useEffect, useState } from "react";
 
@@ -26,7 +26,7 @@ const RootLayout = ({ children }) => {
   };
 
   const getUserInfo = async () => {
-    const { nickname, avatarUrl } = await request(`${SYSTEM_USER_API}/current`);
+    const { nickname, avatarUrl } = await request(`${USER_CENTER_USER_API}/current`);
     return { nickname, avatarUrl };
   };
 
