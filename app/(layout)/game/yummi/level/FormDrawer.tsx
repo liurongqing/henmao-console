@@ -13,12 +13,12 @@ import {
 import { forwardRef } from "react";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { request } from "@/utils";
-import { LEVEL_API } from "@/consts";
-import useLevelModal from "./useLevelModal";
+import { YUMMI_LEVEL_API } from "@/consts";
+import useModal from "./useModalStore";
 
 export default function FormDrawer({ actionRef }) {
   // console.log("ref", { ref });
-  const useLevel = useLevelModal();
+  const useLevel = useModal();
   const [form] = Form.useForm();
   const formItemLayout = {
     labelCol: { span: 5 },
@@ -37,9 +37,9 @@ export default function FormDrawer({ actionRef }) {
   const handleOk = () => {
     form.validateFields().then(async (values) => {
       if (values._id) {
-        await request(`${LEVEL_API}/${values._id}`, values, "put");
+        await request(`${YUMMI_LEVEL_API}/${values._id}`, values, "put");
       } else {
-        await request(LEVEL_API, values, "post");
+        await request(YUMMI_LEVEL_API, values, "post");
       }
 
       message.success("操作成功");
@@ -128,7 +128,7 @@ export default function FormDrawer({ actionRef }) {
                 );
               })}
 
-              <Form.Item label=" " colon={false} wrapperCol={{ span: 17 }}>
+              {/* <Form.Item label=" " colon={false} wrapperCol={{ span: 17 }}>
                 <Button
                   type="dashed"
                   onClick={() => add()}
@@ -137,7 +137,7 @@ export default function FormDrawer({ actionRef }) {
                 >
                   新增
                 </Button>
-              </Form.Item>
+              </Form.Item> */}
             </>
           )}
         </Form.List>

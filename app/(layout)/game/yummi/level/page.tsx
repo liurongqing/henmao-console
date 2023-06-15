@@ -1,25 +1,17 @@
 "use client";
 
-import {
-  ProTable,
-  DrawerForm,
-  ProForm,
-  ProFormDateRangePicker,
-  ProFormSelect,
-  ProFormText,
-  ProColumns,
-} from "@ant-design/pro-components";
-import { Button, Form, message } from "antd";
+import { ProTable } from "@ant-design/pro-components";
+import { Button, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { request } from "@/utils";
 import { LEVEL_API } from "@/consts";
 import { tableColumns } from "./tableColumns";
-import useLevelModal from "./useLevelModal";
+import useModal from "./useModalStore";
 import FormDrawer from "./FormDrawer";
 import { useRef, useState } from "react";
 
 export default function Level() {
-  const useLevel = useLevelModal();
+  const useLevel = useModal();
   const ref = useRef();
   const [columnsState, setColumnsState] = useState<any>({
     // level: {

@@ -16,6 +16,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: "/mini-yummi/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_ROOT}/mini-yummi/:path*`,
+      },
+      {
         source: "/user-center/:path*",
         destination: `${process.env.NEXT_PUBLIC_API_ROOT}/user-center/:path*`,
       },

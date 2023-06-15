@@ -40,10 +40,10 @@ export const layoutDefaultProps = {
           //   path: "/game/level",
           //   name: "关卡列表",
           // },
-          {
-            path: "/game/platform",
-            name: "游戏平台", // 目前只有微信
-          },
+          // {
+          //   path: "/game/platform",
+          //   name: "游戏平台", // 目前只有微信
+          // },
           // {
           //   path: "/game/user",
           //   name: "用户列表",

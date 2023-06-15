@@ -73,6 +73,7 @@ export default function FormDrawer({ actionRef }) {
         <Form.Item name="_id" hidden={true}>
           <InputNumber />
         </Form.Item>
+        
         <Form.Item label="用户名" name="username" rules={[{ required: true }]}>
           <Input disabled={isEdit} />
         </Form.Item>

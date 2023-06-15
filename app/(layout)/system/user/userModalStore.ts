@@ -11,7 +11,7 @@ const initialForm = {
   avatarUrl: "",
 };
 
-interface LevelModalStore {
+interface ModalProps {
   isOpen: boolean;
   formData: any;
   onOpen: () => void;
@@ -20,7 +20,7 @@ interface LevelModalStore {
   setFormData: (formData) => void;
 }
 
-const useLevelModal = create<LevelModalStore>((set) => ({
+export default create<ModalProps>((set) => ({
   isOpen: false,
   formData: { ...initialForm },
   onOpen: () => set({ isOpen: true }),
@@ -28,5 +28,3 @@ const useLevelModal = create<LevelModalStore>((set) => ({
   onReset: () => set({ formData: { ...initialForm } }),
   setFormData: (formData) => set({ formData: { ...formData } }),
 }));
-
-export default useLevelModal;

@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { ProTable } from "@ant-design/pro-components";
 import { request } from "@/utils";
-import { WXUSER_API } from "@/consts";
+import { USER_CENTER_WXUSER_API } from "@/consts";
 import { tableColumns } from "./tableColumns";
 
 export default function Level() {
@@ -11,7 +11,7 @@ export default function Level() {
   const [columnsState, setColumnsState] = useState<any>({});
 
   const getList = async (params) => {
-    const { list, total } = await request(WXUSER_API, {
+    const { list, total } = await request(USER_CENTER_WXUSER_API, {
       ...params,
     });
     return {
