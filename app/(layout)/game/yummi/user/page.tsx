@@ -12,6 +12,7 @@ export default function Level() {
 
   const getList = async (params) => {
     const { list, total } = await request(USER_CENTER_WXUSER_API, {
+      game: "yummi",
       ...params,
     });
     return {

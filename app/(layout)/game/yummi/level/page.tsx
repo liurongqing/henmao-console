@@ -4,7 +4,7 @@ import { ProTable } from "@ant-design/pro-components";
 import { Button, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { request } from "@/utils";
-import { LEVEL_API } from "@/consts";
+import { YUMMI_LEVEL_API } from "@/consts";
 import { tableColumns } from "./tableColumns";
 import useModal from "./useModalStore";
 import FormDrawer from "./FormDrawer";
@@ -21,7 +21,7 @@ export default function Level() {
 
   const getList = async (params) => {
     // console.log("params", { params });
-    const { list, total } = await request(LEVEL_API, {
+    const { list, total } = await request(YUMMI_LEVEL_API, {
       ...params,
     });
     return {
@@ -33,7 +33,7 @@ export default function Level() {
 
   // 删除
   const handleDelete = async (row: any, action) => {
-    await request(`${LEVEL_API}/${row._id}`, undefined, "delete");
+    await request(`${YUMMI_LEVEL_API}/${row._id}`, undefined, "delete");
     // 删除成功
     message.success("删除成功");
     action?.reload();

@@ -67,8 +67,8 @@ export const layoutDefaultProps = {
             name: "抽个冰糖葫芦",
             routes: [
               {
-                path: "/game/drawlots/level",
-                name: "关卡管理",
+                path: "/game/drawlots",
+                name: "用户管理",
               },
             ],
           },
@@ -77,8 +77,8 @@ export const layoutDefaultProps = {
             name: "数独迷题",
             routes: [
               {
-                path: "/game/sudoku/level",
-                name: "关卡管理",
+                path: "/game/sudoku",
+                name: "用户管理",
               },
             ],
           },
@@ -87,8 +87,8 @@ export const layoutDefaultProps = {
             name: "拼动滑图",
             routes: [
               {
-                path: "/game/sliding/level",
-                name: "关卡管理",
+                path: "/game/sliding",
+                name: "用户管理",
               },
             ],
           },

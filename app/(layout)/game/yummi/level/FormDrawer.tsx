@@ -128,7 +128,7 @@ export default function FormDrawer({ actionRef }) {
                 );
               })}
 
-              {/* <Form.Item label=" " colon={false} wrapperCol={{ span: 17 }}>
+              <Form.Item label=" " colon={false} wrapperCol={{ span: 17 }}>
                 <Button
                   type="dashed"
                   onClick={() => add()}
@@ -137,7 +137,7 @@ export default function FormDrawer({ actionRef }) {
                 >
                   新增
                 </Button>
-              </Form.Item> */}
+              </Form.Item>
             </>
           )}
         </Form.List>
