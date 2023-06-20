@@ -8,12 +8,8 @@ async function checkLogin(token) {
     const res = await fetch(CHECK_LOGIN_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      // },
       body: JSON.stringify({ token }),
     });
-    // console.log("checklogin res", res.json());
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");

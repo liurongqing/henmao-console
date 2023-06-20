@@ -55,6 +55,7 @@ export const request = async (
   let defaultHeaders: any = {
     // ...(token ? { Authorization: `Bearer ${token}` } : null),
     "Content-Type": "application/json",
+    "X-PLATFORM": "console",
   };
   if (isFileUpload) {
     delete defaultHeaders["Content-Type"];
