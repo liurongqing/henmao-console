@@ -6,6 +6,12 @@ import dayjs from "dayjs";
 export const tableColumns = () => {
   return [
     {
+      title: "所属游戏",
+      dataIndex: "game",
+      key: "game",
+      width: 100,
+    },
+    {
       title: "头像",
       dataIndex: "avatarUrl",
       key: "avatarUrl",

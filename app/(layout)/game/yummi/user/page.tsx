@@ -7,7 +7,7 @@ import { USER_CENTER_WXUSER_API } from "@/consts";
 import { tableColumns } from "./tableColumns";
 
 export default function Level() {
-  const ref = useRef();
+  const action = useRef();
   const [columnsState, setColumnsState] = useState<any>({});
 
   const getList = async (params) => {
@@ -34,7 +34,7 @@ export default function Level() {
   return (
     <>
       <ProTable
-        actionRef={ref}
+        actionRef={action}
         headerTitle="用户列表"
         cardBordered
         rowKey="_id"
