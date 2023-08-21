@@ -1,4 +1,8 @@
-import { AiFillDashboard, AiOutlineSetting } from "react-icons/ai";
+import {
+  AiFillDashboard,
+  AiOutlineSetting,
+  AiOutlineUser,
+} from "react-icons/ai";
 import { GiCat } from "react-icons/gi";
 import { GrGamepad } from "react-icons/gr";
 import { Layout } from "antd";
@@ -32,30 +36,25 @@ export const layoutDefaultProps = {
         icon: <AiFillDashboard />,
       },
       {
+        path: "/user",
+        name: "用户管理",
+        icon: <AiOutlineUser />,
+        routes: [
+          {
+            path: "/user/wechat",
+            name: "微信用户",
+          },
+        ],
+      },
+      {
         path: "/game",
         name: "游戏管理",
         icon: <GrGamepad />,
         routes: [
-          // {
-          //   path: "/game/level",
-          //   name: "关卡列表",
-          // },
-          // {
-          //   path: "/game/platform",
-          //   name: "游戏平台", // 目前只有微信
-          // },
-          // {
-          //   path: "/game/user",
-          //   name: "用户列表",
-          // },
           {
             path: "/game/yummi",
             name: "美味消一消",
             routes: [
-              {
-                path: "/game/yummi/user",
-                name: "用户列表",
-              },
               {
                 path: "/game/yummi/level",
                 name: "关卡管理",

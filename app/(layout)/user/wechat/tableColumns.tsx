@@ -3,6 +3,15 @@
 import { Image } from "antd";
 import dayjs from "dayjs";
 
+const gameType = {
+  drawLots: {
+    text: "抽个冰糖葫芦",
+  },
+  yummi: {
+    text: "美食消一消",
+  },
+};
+
 export const tableColumns = () => {
   return [
     {
@@ -10,6 +19,11 @@ export const tableColumns = () => {
       dataIndex: "game",
       key: "game",
       width: 100,
+      valueEnum: gameType,
+      initialValue: 'drawLots',
+      render(_, row) {
+        return gameType[row.game]?.text;
+      },
     },
     {
       title: "头像",
