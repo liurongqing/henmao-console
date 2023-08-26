@@ -1,6 +1,17 @@
 "use client";
 import { ConfigProvider, Dropdown, Breadcrumb, Alert, Spin } from "antd";
 import { ProLayout, PageContainer, ProCard } from "@ant-design/pro-components";
+import * as echarts from "echarts/core";
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent
+} from 'echarts/components';
+import { LabelLayout, UniversalTransition } from 'echarts/features';
+import { SVGRenderer } from 'echarts/renderers';
+import { BarChart } from 'echarts/charts';
 import { AiOutlineLogout } from "react-icons/ai";
 import zhCN from "antd/locale/zh_CN";
 import dayjs from "dayjs";
@@ -13,6 +24,18 @@ import { layoutDefaultProps } from "./layoutDefaultProps";
 import { useEffect, useState } from "react";
 
 dayjs.locale("cn");
+// 注册必须的组件
+echarts.use([
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  BarChart,
+  LabelLayout,
+  UniversalTransition,
+  SVGRenderer
+]);
 
 const RootLayout = ({ children }) => {
   const pathname = usePathname();

@@ -31,7 +31,7 @@ export const layoutDefaultProps = {
     // path: "/",
     routes: [
       {
-        path: "/",
+        path: "/dashboard",
         name: "Dashboard",
         icon: <AiFillDashboard />,
       },
