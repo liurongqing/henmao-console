@@ -115,20 +115,20 @@ export default function FormDrawer({ actionRef }) {
                         name={[name, "num"]}
                         rules={[{ required: true, message: "请输入" }]}
                       >
-                        <InputNumber className="!w-20" placeholder="数量" />
+                        <InputNumber step={5} className="!w-20" placeholder="数量" />
                       </Form.Item>
-                      <Form.Item>
+                      {/* <Form.Item>
                         <MinusCircleOutlined
                           className="w-8"
                           onClick={() => remove(name)}
                         />
-                      </Form.Item>
+                      </Form.Item> */}
                     </div>
                   </Form.Item>
                 );
               })}
 
-              <Form.Item label=" " colon={false} wrapperCol={{ span: 17 }}>
+              {/* <Form.Item label=" " colon={false} wrapperCol={{ span: 17 }}>
                 <Button
                   type="dashed"
                   onClick={() => add()}
@@ -137,7 +137,7 @@ export default function FormDrawer({ actionRef }) {
                 >
                   新增
                 </Button>
-              </Form.Item>
+              </Form.Item> */}
             </>
           )}
         </Form.List>

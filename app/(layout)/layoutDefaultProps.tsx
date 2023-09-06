@@ -44,6 +44,10 @@ export const layoutDefaultProps = {
             path: "/user/wechat",
             name: "微信用户",
           },
+          {
+            path: "/user/wechat2",
+            name: "抖音用户",
+          },
         ],
       },
       {

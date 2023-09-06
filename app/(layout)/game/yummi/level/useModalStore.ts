@@ -6,9 +6,9 @@ const initialForm = {
   _id: "",
   level: 1,
   donuts: [
-    { type: 1, frame: 2 },
-    { type: 2, frame: 3 },
-    { type: 3, frame: 4 },
+    { type: 1, frame: 2, num: 15 },
+    { type: 2, frame: 3, num: 15 },
+    { type: 3, frame: 4, num: 15 },
   ],
   time: 120,
 };
