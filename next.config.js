@@ -6,9 +6,9 @@ console.log(
 );
 
 const nextConfig = {
-  api: {
-    bodyParser: false,
-  },
+  // api: {
+  //   bodyParser: false,
+  // },
   experimental: {
     appDir: true,
   },
