@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'henmao-console',
       script: 'npm start',
-      watch: true,
+      watch: false,
       ignore_watch: ['node_modules', 'log'],
     },
   ],
