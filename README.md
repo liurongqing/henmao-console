@@ -1,5 +1,9 @@
 基于 next.js + antd 开发后台
 
+
+## 动态添加计划任务
+https://juejin.cn/book/7226988578700525605/section/7271574633512435747?enter_from=course_center&utm_source=course_center
+
 ## todo
 
 拦截器，判断，后台的接口必须有 _id， 微信小游戏的接口必须有 openid

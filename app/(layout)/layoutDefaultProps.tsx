@@ -107,6 +107,10 @@ export const layoutDefaultProps = {
             path: "/system/user",
             name: "管理员列表",
           },
+          {
+            path: "/system/cron",
+            name: "定时任务"
+          }
         ],
       },
     ],
